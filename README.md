@@ -13,7 +13,7 @@ In today's digital age, the availability of vast music libraries demands efficie
 By leveraging the Free Music Archive (FMA) dataset, along with the power of the "librosa" library, 
 we seek to provide users with tailored music recommendations based on their preferences and listening history.
 Key Questions
-	1) Can the model accurately identify the genre of the music?
-	2) Does the model effectively recommend music to users based on similarity?
+* Can the model accurately identify the genre of the music? 
+* Does the model effectively recommend music to users based on similarity?
 
 
