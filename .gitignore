@@ -1,0 +1,2 @@
+# ignore datsets since the data is too big and can bring legal issues
+datasets/
