@@ -27,9 +27,9 @@ Key Questions
 3. Create a new personal access token.
 4. Once you've created the access token, you can use it as a password when you perform Git commands, such as git push.
 5. Optionally, you can save the access key by executing the following commands. This will allow you to avoid entering authentication details every time you use a git command:
-`git config --unset credential.helper ## reset the previous setting
+```git config --unset credential.helper ## reset the previous setting
  git config credential.helper store ## save current account information into ~/.git_credentials
-`
+```
 
 `@inproceedings{fma_dataset,
   title = {{FMA}: A Dataset for Music Analysis},
