@@ -21,8 +21,17 @@ Key Questions
 1. install python 3.9.12
 2. pip install -r requirments.txt
 
+### Git Settings
+1. Create a GitHub account if you don't already have one.
+2. Go to "Settings" in your GitHub account, then select "Developer Settings," and click on "Personal access tokens."
+3. Create a new personal access token.
+4. Once you've created the access token, you can use it as a password when you perform Git commands, such as git push.
+5. Optionally, you can save the access key by executing the following commands. This will allow you to avoid entering authentication details every time you use a git command:
+`git config --unset credential.helper ## reset the previous setting
+ git config credential.helper store ## save current account information into ~/.git_credentials
+`
 
-@inproceedings{fma_dataset,
+`@inproceedings{fma_dataset,
   title = {{FMA}: A Dataset for Music Analysis},
   author = {Defferrard, Micha\"el and Benzi, Kirell and Vandergheynst, Pierre and Bresson, Xavier},
   booktitle = {18th International Society for Music Information Retrieval Conference (ISMIR)},
@@ -30,9 +39,9 @@ Key Questions
   archiveprefix = {arXiv},
   eprint = {1612.01840},
   url = {https://arxiv.org/abs/1612.01840},
-}
+}`
 
-@inproceedings{fma_challenge,
+`@inproceedings{fma_challenge,
   title = {Learning to Recognize Musical Genre from Audio},
   subtitle = {Challenge Overview},
   author = {Defferrard, Micha\"el and Mohanty, Sharada P. and Carroll, Sean F. and Salath\'e, Marcel},
@@ -44,7 +53,7 @@ Key Questions
   archiveprefix = {arXiv},
   eprint = {1803.05337},
   url = {https://arxiv.org/abs/1803.05337},
-}
+}`
 
 * The code in this repository is released under the MIT license.
 * The metadata is released under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
