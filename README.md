@@ -32,6 +32,8 @@ Key Questions
  git config credential.helper store ## save current account information into ~/.git_credentials
 ```
 
+
+### References
 ```
 @inproceedings{fma_dataset,
   title = {{FMA}: A Dataset for Music Analysis},
@@ -60,6 +62,7 @@ Key Questions
 }
 ```
 
+### License
 * The code in this repository is released under the MIT license.
 * The metadata is released under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
 * We do not hold the copyright on the audio and distribute it under the license chosen by the artist.
