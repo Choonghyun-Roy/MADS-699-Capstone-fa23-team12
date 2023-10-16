@@ -21,6 +21,23 @@ Key Questions
 1. install python 3.9.12
 2. pip install -r requirments.txt
 
+
+### Flatten mp3 files in dataset
+Since in the original data source, mp3 files are separated in different folders. To make it easier to load files to extract features, we need to flatten the file structures. (Mac)
+
+```
+cd /path/to/parent/directory/
+```
+
+```
+mkdir fma_small_flattend # flattend_file_folder_name 
+```
+
+```
+find . -type f -name "*.mp3" -exec mv {} ../fma_small_flattend/ \;
+```
+
+
 ### Git Settings
 1. Create a GitHub account if you don't already have one.
 2. Go to "Settings" in your GitHub account, then select "Developer Settings," and click on "Personal access tokens."
