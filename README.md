@@ -7,6 +7,8 @@
   * Shreya Uppal (shreyaru@umich.edu)
   * Tianran Lin (hazellin@umich.edu)
 
+### Why this is cool ? Easy to dive into our work??
+
 ### Music Recommendation Model
 Our project aims to develop an intelligent Music Recommendation System using data science and machine learning techniques. 
 In today's digital age, the availability of vast music libraries demands efficient and personalized music recommendation systems. 
@@ -16,6 +18,7 @@ Key Questions
 * Can the model accurately identify the genre of the music? 
 * Does the model effectively recommend music to users based on similarity?
 
+### Datasets
 
 ### Quick Start
 1. install python 3.9.12
