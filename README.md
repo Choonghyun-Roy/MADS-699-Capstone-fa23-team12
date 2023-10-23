@@ -4,7 +4,7 @@
 #### Authors
   * Choonghyun Lee (roylee@umich.edu)
   * Liang Yao (yaoliang@umich.edu)
-  * Shreya Uppal (shreyaru@umich.edu)
+  * Shreya Uppal (shreyau@umich.edu)
   * Tianran Lin (hazellin@umich.edu)
 
 ### Why this is cool ? Easy to dive into our work??
