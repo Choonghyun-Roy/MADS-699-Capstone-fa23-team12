@@ -84,8 +84,8 @@ def set_background(png_file):
             
 def main():
     
-    st.title('Welcome to SoundSphere !!!')
-    st.image('images/title.png')  
+    st.title('Welcome to AudioGenious !!!')
+    st.image('images/logo_2.png')  
     
     # upload music_file
     uploaded_file = st.file_uploader("Choose your favorite music file!")
