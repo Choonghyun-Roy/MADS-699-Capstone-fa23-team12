@@ -86,7 +86,7 @@ def set_background(png_file):
 def main():
     
     st.title('Welcome to AudioGenious !!!')
-    st.image('/webapp/images/logo5.png')  
+    st.image('webapp/images/logo5.png')  
     
     col1, col2 = st.columns(2)
 
