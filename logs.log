@@ -8,3 +8,21 @@
 'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
 2023-10-29 19:51:07,242:INFO:Initializing load_model()
 2023-10-29 19:51:07,242:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 21:07:15,988:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-03 21:07:15,989:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-03 21:07:15,989:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-03 21:07:15,989:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-03 21:07:22,720:INFO:Initializing load_model()
+2023-11-03 21:07:22,720:INFO:Initializing load_model()
+2023-11-03 21:07:22,720:INFO:Initializing load_model()
+2023-11-03 21:07:22,720:INFO:Initializing load_model()
+2023-11-03 21:07:22,720:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 21:07:22,720:INFO:Initializing load_model()
+2023-11-03 21:07:22,720:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 21:07:22,720:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 21:07:22,720:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 21:07:22,721:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
