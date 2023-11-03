@@ -52,6 +52,11 @@ find . -type f -name "*.mp3" -exec mv {} ../fma_small_flattend/ \;
  git config credential.helper store ## save current account information into ~/.git_credentials
 ```
 
+### How to run streamlit application
+```
+cd webapp
+streamlit run main.py
+```
 
 ### References
 ```

@@ -1,4 +1,6 @@
 import pandas as pd
+import numpy as np
+from scipy.spatial import distance
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler
 
@@ -19,7 +21,54 @@ def get_current_music_data():
     return merged_df
 
 
-def gain_similarity_matrix(track_id, X, genre=None):
+def weighted_euclidean_distance(df, feature_importance):
+    # Apply weights to the features
+    weighted_features = df * feature_importance
+    
+    # Initialize an empty DataFrame for distances
+    distances_df = pd.DataFrame(index=weighted_features.index, columns=weighted_features.index)
+    
+    # Calculate the Euclidean distance for each unique pair of rows
+    for i in weighted_features.index:
+        for j in weighted_features.index:
+            # Fill the DataFrame symmetrically since the distance is a symmetric measure
+            if pd.isnull(distances_df.at[i, j]):
+                # Compute the distance
+                dist = distance.euclidean(df.loc[i], df.loc[j])
+                distances_df.at[i, j] = dist
+                distances_df.at[j, i] = dist
+    
+    # Set the diagonal to 0.0 since the distance of an observation to itself is always 0
+    pd.fill_diagonal(distances_df.values, 0)
+    upper_triangle = distances_df.where(np.triu(np.ones(distances_df.shape), k=1).astype(np.bool))
+    
+    # Find the minimum and maximum values
+    min_distance = upper_triangle.min().min()
+    max_distance = upper_triangle.max().max()
+    
+    # Apply the normalization formula
+    normalized_df = 1 - (distances_df - min_distance) / (max_distance - min_distance)
+    
+    # Fill the diagonal with 1s since the distance to itself should be the closest
+    np.fill_diagonal(normalized_df.values, 1)
+    
+    return normalized_df
+
+
+def weighted_cosine_similarity(df, feature_importance):
+    # Apply weights to the features
+    weighted_features = df * feature_importance
+    
+    # Compute the cosine similarity matrix
+    similarity_matrix = cosine_similarity(weighted_features)
+    
+    # Convert the similarity matrix to a DataFrame
+    similarity_df = pd.DataFrame(similarity_matrix, index=df.index, columns=df.index)
+    
+    return similarity_df
+    
+
+def gain_similarity_matrix(track_id, X, genre=None, weighted=False, feature_importance=None):
     current_music_df = get_current_music_data()
     X.insert(loc=0, column=LABEL, value=[genre])
     X.insert(loc=1, column='track_id', value=[track_id])
@@ -36,17 +85,25 @@ def gain_similarity_matrix(track_id, X, genre=None):
         combined_data = combined_data[combined_data[LABEL] == genre]
     
     # get similarity
-    similarity = cosine_similarity(combined_data[feature_list])
+    if not weighted:
+        similarity = cosine_similarity(combined_data[feature_list])
+        print('cosine similarity')
+        print(similarity)
+    else:
+        similarity = weighted_cosine_similarity(combined_data[feature_list], feature_importance)
+        print('weighted cosine similarity')
+        print(similarity)
+        
     labels = combined_data[LABEL]
     result = pd.DataFrame(similarity, index=labels.index, columns=labels.index)
     return result
 
 
-def get_similar_music(track_id, X, genre, n=10):
+def get_similar_music(track_id, X, genre, n=10, weighted=False, feature_importance=None):
     df_meta = pd.read_csv(META_FILE)
 
     # Get the similarity scores
-    series = gain_similarity_matrix(track_id, X, genre)[track_id]
+    series = gain_similarity_matrix(track_id, X, genre, weighted, feature_importance)[track_id]
   
     # If it's a DataFrame, drop duplicates and select the track_id column to get a Series
     if isinstance(series, pd.DataFrame):

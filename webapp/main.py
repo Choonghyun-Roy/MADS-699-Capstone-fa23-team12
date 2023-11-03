@@ -10,7 +10,8 @@ from pycaret.classification import *
 
 
 # Load trained model
-model = load_model('xgboost_model_20231021')
+xgboost_model = load_model('xgboost_model_20231021')
+cnn_model = load_model('xgboost_model_20231021')
 N_OF_RECOMMEND = 10
     
 # directory for user uploaded files
@@ -85,7 +86,28 @@ def set_background(png_file):
 def main():
     
     st.title('Welcome to AudioGenious !!!')
-    st.image('images/logo_2.png')  
+    st.image('images/logo5.png')  
+    
+    col1, col2 = st.columns(2)
+
+    # Place a select box in the first column
+    with col1:
+        selected_model = st.selectbox('Choose model: ', ['Xgboost', 'CNN'], key='model')
+
+    # Place another select box in the second column
+    with col2:
+        selected_metric = st.selectbox("Choose metric:", ['Cosine-similarity','Weighted cosine-similarity'], key='metric')
+
+    # Output the selected options
+    st.write(f"Model: {selected_model}")
+    st.write(f"Metric: {selected_metric}")
+
+    model = xgboost_model
+    if selected_model == 'CNN':
+       model = cnn_model
+    weighted = False
+    if selected_metric == 'Weighted cosine-similarity':
+       weighted = True
     
     # upload music_file
     uploaded_file = st.file_uploader("Choose your favorite music file!")
@@ -116,18 +138,19 @@ def main():
         # predict genre
         X = features.drop('track_id', axis=1)
         genre_pred = model.predict(X)[0]
+        feature_importance = model.feature_importances_
         
         st.info(f"Predicted genre : {genre_pred}")
            
         # get recommendation list   
         button_clicked = st.button("Provide similar music in same genre...")
         if button_clicked:
-            result = get_similar_music(file_name, X, genre_pred, N_OF_RECOMMEND)
+            result = get_similar_music(file_name, X, genre_pred, N_OF_RECOMMEND, weighted, feature_importance)
             show_result(st, result)
             
         button_clicked_all = st.button("Provide similar music in all genre...")
         if button_clicked_all:
-            result = get_similar_music(file_name, X, None, N_OF_RECOMMEND)
+            result = get_similar_music(file_name, X, None, N_OF_RECOMMEND, weighted, feature_importance)
             show_result(st, result)
             
        
