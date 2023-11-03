@@ -4,8 +4,8 @@ from scipy.spatial import distance
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler
 
-META_FILE = '../preprocessing/datasets/tracks_with_genre_small.csv'
-FEATURE_FILE = '../feature_extraction/features/all_features.csv'
+META_FILE = 'preprocessing/datasets/tracks_with_genre_small.csv'
+FEATURE_FILE = 'feature_extraction/features/all_features.csv'
 LABEL = 'depth_1_genre_name'
 
 def get_current_music_data():

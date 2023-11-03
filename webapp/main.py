@@ -15,7 +15,7 @@ cnn_model = load_model('xgboost_model_20231021')
 N_OF_RECOMMEND = 10
     
 # directory for user uploaded files
-UPLOAD_HOME = 'user_uploaded_music'    
+UPLOAD_HOME = 'webapp/user_uploaded_music'    
        
 def show_result(st, result):
 
@@ -41,7 +41,7 @@ def show_result(st, result):
     
         for index, row in result.iterrows():
             col1, col2, col3, col4, col5, col6, col7 = st.columns([1,1,1,2,2,3,2])
-            file_name = f"music_list/{row['track_id']:06d}.mp3"
+            file_name = f"webapp/music_list/{row['track_id']:06d}.mp3"
             
             with col1:
                 st.write(row['track_id'])
