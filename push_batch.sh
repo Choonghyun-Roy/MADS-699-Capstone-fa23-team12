@@ -44,4 +44,4 @@ if [[ -s "$batch_file" ]]; then
 fi
 
 # Remove the temporary file
-rm "$batch_file"
+rm "$batch_file":wq!
