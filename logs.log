@@ -1,0 +1,64 @@
+2023-10-29 19:49:50,727:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-10-29 19:49:50,727:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-10-29 19:49:50,727:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-10-29 19:49:50,727:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-10-29 19:51:07,242:INFO:Initializing load_model()
+2023-10-29 19:51:07,242:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 21:07:15,988:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-03 21:07:15,989:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-03 21:07:15,989:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-03 21:07:15,989:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-03 21:07:22,720:INFO:Initializing load_model()
+2023-11-03 21:07:22,720:INFO:Initializing load_model()
+2023-11-03 21:07:22,720:INFO:Initializing load_model()
+2023-11-03 21:07:22,720:INFO:Initializing load_model()
+2023-11-03 21:07:22,720:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 21:07:22,720:INFO:Initializing load_model()
+2023-11-03 21:07:22,720:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 21:07:22,720:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 21:07:22,720:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 21:07:22,721:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:53:22,385:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-03 22:53:22,386:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-03 22:53:22,386:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-03 22:53:22,386:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-03 22:53:27,659:INFO:Initializing load_model()
+2023-11-03 22:53:27,659:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:53:28,063:INFO:Initializing load_model()
+2023-11-03 22:53:28,063:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:53:56,591:INFO:Initializing load_model()
+2023-11-03 22:53:56,592:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:53:56,643:INFO:Initializing load_model()
+2023-11-03 22:53:56,643:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:54:07,998:INFO:Initializing load_model()
+2023-11-03 22:54:07,999:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:54:08,037:INFO:Initializing load_model()
+2023-11-03 22:54:08,037:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:54:44,296:INFO:Initializing load_model()
+2023-11-03 22:54:44,297:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:54:44,389:INFO:Initializing load_model()
+2023-11-03 22:54:44,389:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:54:52,656:INFO:Initializing load_model()
+2023-11-03 22:54:52,657:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:54:52,704:INFO:Initializing load_model()
+2023-11-03 22:54:52,704:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:55:18,717:INFO:Initializing load_model()
+2023-11-03 22:55:18,718:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:55:18,766:INFO:Initializing load_model()
+2023-11-03 22:55:18,766:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:55:26,800:INFO:Initializing load_model()
+2023-11-03 22:55:26,801:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-03 22:55:26,853:INFO:Initializing load_model()
+2023-11-03 22:55:26,853:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
