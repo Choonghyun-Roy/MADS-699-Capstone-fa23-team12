@@ -45,7 +45,6 @@ def extract_harmony_percussive(y, sr, filename, output_filename):
     rms_percussive = np.mean(lb.feature.rms(y=y_percussive))
     save_to_csv([filename, rms_harmonic, rms_percussive], ['track_id', 'rms_harmonic', 'rms_percussive'], output_filename)
 
-
 def extract_features(file_full_path):
     
     parts = file_full_path.rsplit("/", 1)
@@ -76,12 +75,12 @@ def extract_features(file_full_path):
     extract_harmony_percussive(y, sr, filename, f"{path}/hpss.csv") 
     
     ## merge features into a single file
-    
     file_names = ["tempo", "hpss", "spectral_centroid", "spectral_rolloff", "zero_crossings", "chroma_stft", "mfccs"]
 
     # Using a list comprehension to read all dataframes into a list
     dfs = [pd.read_csv(f"{path}/{file_name}.csv") for file_name in file_names]
 
+    # merge 7 feature types into single one.
     merged_df = dfs[0]
     for df in dfs[1:]:
         merged_df = merged_df.merge(df, on='track_id', how='outer')

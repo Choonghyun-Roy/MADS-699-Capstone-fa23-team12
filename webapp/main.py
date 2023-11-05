@@ -3,11 +3,11 @@ import os
 import base64
 import pandas as pd
 import numpy as np
-from feature_extraction import extract_features
 from similarity_calculation import get_similar_music
 from datetime import datetime
 from pycaret.classification import * 
-
+from feature_extraction import extract_features
+from dbconnection import execute_query
 
 # Load trained model
 xgboost_model = load_model('xgboost_model_20231021')
@@ -16,72 +16,78 @@ N_OF_RECOMMEND = 10
     
 # directory for user uploaded files
 UPLOAD_HOME = 'webapp/user_uploaded_music'    
-       
-def show_result(st, result):
+  
+def insert_feedback(user_name, selected_model, selected_metric, org_track_id, track_id, like_yn):
+    insert_query = """
+        INSERT INTO user_feedback (user_name, model_type, metric_type, original_track_id, recommended_track_id, like_yn) 
+        VALUES (%s, %s, %s, %s, %s, %s);
+    """
+    data = (user_name, selected_model, selected_metric, org_track_id, track_id, like_yn)
+    execute_query(insert_query, data)
 
-    with st.form(key='toggle_form'):
-        # Loop through the DataFrame and add rows to the table HTML string
-        col1, col2, col3, col4, col5, col6, col7 = st.columns([1,1,1,2,2,3,2])
-        with col1:
-            st.write('track_id')
-        with col2:
-            st.write('score')
-        with col3:
-            st.write('genre')
-        with col4:
-            st.write('artist')
-        with col5:
-            st.write('track_title')
-        with col6:
-            st.write('play')
-        with col7:
-            st.write('feedback')
-            
-        toggle_states = {} 
+def all_genre_submitted():
+    st.session_state.all_genre_submitted = True
     
-        for index, row in result.iterrows():
-            col1, col2, col3, col4, col5, col6, col7 = st.columns([1,1,1,2,2,3,2])
-            file_name = f"webapp/music_list/{row['track_id']:06d}.mp3"
-            
-            with col1:
-                st.write(row['track_id'])
-            with col2:
-                st.write(round(row['similarity_score'],4))
-            with col3:
-                st.write(row['depth_1_genre_name'])
-            with col4:
-                st.write(row['artist_name'])
-            with col5:
-                st.write(row['track_title'])
-            with col6:
-                st.audio(file_name, format='audio/mp3')
-            with col7:
-                toggle_states[index] = st.checkbox('Like', key=index)
-                
-        submit_button = st.form_submit_button(label="Send feedback")
+def all_genre_reset():
+    st.session_state.all_genre_submitted = False
+    
+def selected_genre_submitted():
+    st.session_state.selected_genre_submitted = True
+    
+def selected_genre_reset():
+    st.session_state.selected_genre_submitted = False
+
+def submitted():
+    st.session_state.submitted = True
+    
+def reset():
+    st.session_state.submitted = False
+                      
+def show_result(exist_yn, org_track_id, selected_model, selected_metric, result):
+    if exist_yn:
+        st.info('The music already exists in our database!')
+    else:
+        st.info('The music is new. Will be added to our database!')
+          
+    # Use session state to store toggle states
+    if 'toggle_states' not in st.session_state:
+        st.session_state.toggle_states = {}
         
-        if submit_button:
-            print('do actions')
+    with st.form(key='feedback_form'):
+        # Display headers
+        cols = st.columns([1, 1, 1, 2, 2, 3, 2])
+        headers = ['track_id', 'score', 'genre', 'artist', 'track_title', 'play', 'feedback']
+        for col, header in zip(cols, headers):
+            col.write(header)
+        
+        # Display each track row with its feedback checkbox
+        for index, row in result.iterrows():
+            cols = st.columns([1, 1, 1, 2, 2, 3, 2])
+            track_id = row['track_id']
+            for col, field in zip(cols[:-2], [track_id, round(row['similarity_score'], 4), row['depth_1_genre_name'], row['artist_name'], row['track_title']]):
+                col.write(field)
+            file_name = f"webapp/music_list/{int(track_id):06d}.mp3"
+            cols[5].audio(file_name, format='audio/mp3')
+            feedback_key = f"like_{track_id}"
+            liked = cols[6].checkbox('Like', key=feedback_key, value=st.session_state.toggle_states.get(feedback_key, False))
+            st.session_state.toggle_states[feedback_key] = liked  # Update session state
+        
+        user_name = st.text_input("Enter your username", key="user_name")
+        st.form_submit_button("Send feedback", on_click=submitted)
 
-
-def get_base64(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-      
-def set_background(png_file):
-    bin_str = get_base64(png_file)
-    page_bg_img = '''
-    <style>
-    .stApp {
-    background-image: url("data:image/png;base64,%s");
-    background-size: cover;  
-    background-position: top center;  /* Set the position of the background image to the top center */
-    background-repeat: no-repeat;
-    }
-    </style>
-    ''' % bin_str
-    st.markdown(page_bg_img, unsafe_allow_html=True)
+    if 'submitted' in st.session_state and st.session_state.submitted:
+        print('submitted')
+        st.write("Processing feedback...")
+        # Process feedback for each track using the session state information
+        for track_id, liked in st.session_state.toggle_states.items():
+            numeric_track_id = int(track_id.split('_')[1])
+            insert_feedback(user_name, selected_model, selected_metric, org_track_id, numeric_track_id, liked)
+        st.success('Thank you!!! Your feedback is successfully submitted!')
+        
+        # Clear feedback after submission
+        for key in st.session_state.toggle_states.keys():
+            st.session_state.toggle_states[key] = False    
+        reset()
             
 def main():
     
@@ -138,20 +144,22 @@ def main():
         # predict genre
         X = features.drop('track_id', axis=1)
         genre_pred = model.predict(X)[0]
+        st.info(f"Predicted genre : {genre_pred}")
+      
+        # get the feature_importances to calculate weighted cosine-similarity
         feature_importance = model.feature_importances_
         
-        st.info(f"Predicted genre : {genre_pred}")
-           
+        st.button("Provide similar music in same genre...", on_click=selected_genre_submitted)
+        st.button("Provide similar music in all genre...", on_click=all_genre_submitted)
+          
         # get recommendation list   
-        button_clicked = st.button("Provide similar music in same genre...")
-        if button_clicked:
-            result = get_similar_music(file_name, X, genre_pred, N_OF_RECOMMEND, weighted, feature_importance)
-            show_result(st, result)
+        if 'selected_genre_submitted' in st.session_state and st.session_state.selected_genre_submitted:
+            exist_yn, track_id, result = get_similar_music(upload_location, file_name, X, genre_pred, N_OF_RECOMMEND, weighted, feature_importance)
+            show_result(exist_yn, track_id, selected_model, selected_metric, result)
             
-        button_clicked_all = st.button("Provide similar music in all genre...")
-        if button_clicked_all:
-            result = get_similar_music(file_name, X, None, N_OF_RECOMMEND, weighted, feature_importance)
-            show_result(st, result)
+        if 'all_genre_submitted' in st.session_state and st.session_state.all_genre_submitted:
+            exist_yn, track_id, result = get_similar_music(upload_location, file_name, X, None, N_OF_RECOMMEND, weighted, feature_importance)
+            show_result(exist_yn, track_id, selected_model, selected_metric, result)
             
        
 if __name__ == "__main__":

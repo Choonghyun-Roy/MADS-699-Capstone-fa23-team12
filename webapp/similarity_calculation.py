@@ -1,10 +1,16 @@
 import pandas as pd
 import numpy as np
+import random
+import os
+import shutil
+
+from pydub import AudioSegment
 from scipy.spatial import distance
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler
 
 META_FILE = 'preprocessing/datasets/tracks_with_genre_small.csv'
+MUSIC_LOCATION = 'webapp/music_list'
 FEATURE_FILE = 'feature_extraction/features/all_features.csv'
 LABEL = 'depth_1_genre_name'
 
@@ -99,19 +105,31 @@ def gain_similarity_matrix(track_id, X, genre=None, weighted=False, feature_impo
     return result
 
 
-def get_similar_music(track_id, X, genre, n=10, weighted=False, feature_importance=None):
+def generate_unique_track_id(df_meta):
+    existing_ids = set(df_meta['track_id']) 
+    while True:
+        new_id = random.randint(200000, 999999)
+        if new_id not in existing_ids:
+            return new_id
+        
+        
+def get_similar_music(filepath, filename, X, genre, n=10, weighted=False, feature_importance=None):
+    exist_yn = False
     df_meta = pd.read_csv(META_FILE)
-
+    
+    # Assign new track_id and add it to meta dataset
+    new_track_id = generate_unique_track_id(df_meta)
+    
     # Get the similarity scores
-    series = gain_similarity_matrix(track_id, X, genre, weighted, feature_importance)[track_id]
+    series = gain_similarity_matrix(filename, X, genre, weighted, feature_importance)[filename]
   
     # If it's a DataFrame, drop duplicates and select the track_id column to get a Series
     if isinstance(series, pd.DataFrame):
-        series = series.drop_duplicates(subset=track_id, keep='first')[track_id].iloc[:, 0]
+        series = series.drop_duplicates(subset=filename, keep='first')[filename].iloc[:, 0]
     
      # Sort the Series
     series = series.sort_values(ascending=False)
-    series = series.drop(track_id)
+    series = series.drop(filename)
     
     # Convert to DataFrame
     sorted_df = series.reset_index()
@@ -120,6 +138,36 @@ def get_similar_music(track_id, X, genre, n=10, weighted=False, feature_importan
     # Remove duplicates based on track_id from sorted_df
     sorted_df = sorted_df.drop_duplicates(subset='track_id', keep='first')
     
+    # Check if music already exist in our music_list
+   
+    if sorted_df.iloc[0]['similarity_score'] > 0.9999999999:
+        exist_yn = True
+        track_id = sorted_df.iloc[0]['track_id']
+        sorted_df = sorted_df.iloc[1:]         
+    else:
+        # Add new information to the meta_data file
+        new_row = pd.DataFrame({'track_id': new_track_id, 'track_title': filename}, index=[0])
+        new_row.to_csv(META_FILE, mode='a', header=False, index=True)
+        
+        # Add features
+        X['track_id'] = new_track_id
+        cols = ['track_id'] + [col for col in X if col != 'track_id']
+        X = X[cols]
+        X.to_csv(FEATURE_FILE, mode='a', header=False, index=True)
+
+        # Cut the file to 30 secs, and move it to user_list directory for future use
+        # audio = AudioSegment.from_mp3(f"{filepath}/{filename}")
+        # start_time = 0
+        # end_time = 30000 # 30 secs
+        
+        # if end_time > len(audio):
+        #    end_time = len(audio) 
+           
+        # cut_audio = audio[start_time: end_time]
+        # cut_audio.export(f"{MUSIC_LOCATION}/{track_id}.mp3", format="mp3")
+        # os.remove(f"{filepath}/{filename}")
+        shutil.move(f"{filepath}/{filename}", f"{MUSIC_LOCATION}/{track_id}.mp3")
+        
     # Select the top n songs after removing duplicates
     top_n = sorted_df.head(n)
     
@@ -129,4 +177,4 @@ def get_similar_music(track_id, X, genre, n=10, weighted=False, feature_importan
     # Join with df_meta_unique to get the genre of the recommended songs
     result = top_n.merge(df_meta_unique[['track_id', LABEL, 'artist_name', 'track_title']], on='track_id', how='left')
     
-    return result
+    return (exist_yn, track_id, result)
