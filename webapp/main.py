@@ -77,16 +77,19 @@ def show_result(exist_yn, org_track_id, selected_model, selected_metric, result)
 
     if 'submitted' in st.session_state and st.session_state.submitted:
         print('submitted')
-        st.write("Processing feedback...")
-        # Process feedback for each track using the session state information
-        for track_id, liked in st.session_state.toggle_states.items():
-            numeric_track_id = int(track_id.split('_')[1])
-            insert_feedback(user_name, selected_model, selected_metric, org_track_id, numeric_track_id, liked)
-        st.success('Thank you!!! Your feedback is successfully submitted!')
+        with st.spinner("Processing feedback..."):
+            # Process feedback for each track using the session state information
+            for track_id, liked in st.session_state.toggle_states.items():
+                numeric_track_id = int(track_id.split('_')[1])
+                insert_feedback(user_name, selected_model, selected_metric, str(int(org_track_id)).zfill(6), str(int(numeric_track_id)).zfill(6), liked)
+            st.success('Thank you!!! Your feedback is successfully submitted!')
         
         # Clear feedback after submission
         for key in st.session_state.toggle_states.keys():
             st.session_state.toggle_states[key] = False    
+        
+        all_genre_reset()
+        selected_genre_reset()
         reset()
             
 def main():
