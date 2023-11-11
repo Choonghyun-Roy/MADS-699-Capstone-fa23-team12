@@ -15,7 +15,9 @@ cnn_model = load_model('xgboost_model_20231021')
 N_OF_RECOMMEND = 10
     
 # directory for user uploaded files
-UPLOAD_HOME = 'webapp/user_uploaded_music'    
+UPLOAD_HOME = 'webapp/user_uploaded_music'  
+FILE_PATH = 'datasets/fma_medium_flatten' 
+VALID_META_FILE = 'preprocessing/datasets/25Ktracks_with_genre_validation.csv'
   
 def insert_feedback(user_name, selected_model, selected_metric, org_track_id, track_id, like_yn):
     insert_query = """
@@ -36,19 +38,30 @@ def selected_genre_submitted():
     
 def selected_genre_reset():
     st.session_state.selected_genre_submitted = False
-
-def submitted():
-    st.session_state.submitted = True
     
-def reset():
-    st.session_state.submitted = False
+def predict_genre_submitted():
+    st.session_state.predict_genre_submitted = True
+    
+def predict_genre_reset():
+    st.session_state.predict_genre_submitted = False
+
+def choose_sample_submitted():
+    st.session_state.choose_sample_submitted = True
+    predict_genre_reset()
+    all_genre_reset()
+    selected_genre_reset()
+    
+def choose_sample_reset():
+    st.session_state.choose_sample_submitted = False
+    
+def feedback_submitted():
+    st.session_state.feedback_submitted = True
+    
+def feedback_reset():
+    st.session_state.feedback_submitted = False
                       
-def show_result(exist_yn, org_track_id, selected_model, selected_metric, result):
-    if exist_yn:
-        st.info('The music already exists in our database!')
-    else:
-        st.info('The music is new. Will be added to our database!')
-          
+def show_result(org_track_id, selected_model, selected_metric, result):          
+    
     # Use session state to store toggle states
     if 'toggle_states' not in st.session_state:
         st.session_state.toggle_states = {}
@@ -73,10 +86,10 @@ def show_result(exist_yn, org_track_id, selected_model, selected_metric, result)
             st.session_state.toggle_states[feedback_key] = liked  # Update session state
         
         user_name = st.text_input("Enter your username", key="user_name")
-        st.form_submit_button("Send feedback", on_click=submitted)
+        st.form_submit_button("Send feedback", on_click=feedback_submitted)
 
-    if 'submitted' in st.session_state and st.session_state.submitted:
-        print('submitted')
+    if 'feedback_submitted' in st.session_state and st.session_state.feedback_submitted: 
+        print('feedback_submitted')
         with st.spinner("Processing feedback..."):
             # Process feedback for each track using the session state information
             for track_id, liked in st.session_state.toggle_states.items():
@@ -90,80 +103,101 @@ def show_result(exist_yn, org_track_id, selected_model, selected_metric, result)
         
         all_genre_reset()
         selected_genre_reset()
-        reset()
-            
+        feedback_reset()
+   
+def display_search_music(track):
+
+    st.write(""" Kindly listen to the provided music selection and 
+             subsequently press the button to generate a list of similar tunes.
+             Following this, we invite you to share your feedback. 
+             If you find the music aligns well with the original piece, 
+             please indicate your approval by checking the 'like' checkbox.""")
+    # Display headers
+    cols = st.columns([1, 1, 2, 2, 3])
+    headers = ['track_id', 'genre', 'artist', 'track_title', 'play']
+    for col, header in zip(cols, headers):
+        col.write(header)
+    
+    # Display each track row with its feedback checkbox
+
+    cols = st.columns([1, 1, 2, 2, 3])
+    for col, field in zip(cols[:-1], [track['track_id'], track['depth_1_genre_name'], track['artist_name'], track['track_title']]):
+        col.write(field)
+        
+    file_name = f"{FILE_PATH}/{int(track['track_id']):06d}.mp3"
+    cols[4].audio(file_name, format='audio/mp3')
+        
+                
 def main():
-    
     st.title('Welcome to AudioGenious !!!')
-    st.image('webapp/images/logo5.png')  
-    
+    st.image('webapp/images/logo5.png')
+
     col1, col2 = st.columns(2)
 
-    # Place a select box in the first column
     with col1:
-        selected_model = st.selectbox('Choose model: ', ['Xgboost', 'CNN'], key='model')
+        selected_model = st.selectbox('Choose model:', ['Xgboost', 'CNN'], key='model')
 
-    # Place another select box in the second column
     with col2:
-        selected_metric = st.selectbox("Choose metric:", ['Cosine-similarity','Weighted cosine-similarity'], key='metric')
+        selected_metric = st.selectbox("Choose metric:", ['Cosine-similarity', 'Weighted cosine-similarity'], key='metric')
 
-    # Output the selected options
-    st.write(f"Model: {selected_model}")
-    st.write(f"Metric: {selected_metric}")
+    model = xgboost_model if selected_model == 'Xgboost' else cnn_model
+    weighted = selected_metric == 'Weighted cosine-similarity'
 
-    model = xgboost_model
-    if selected_model == 'CNN':
-       model = cnn_model
-    weighted = False
-    if selected_metric == 'Weighted cosine-similarity':
-       weighted = True
+    # Show sample music button
+    button_label = "Change sample music!" if 'selected_track' in st.session_state else "Show sample music!"
+
+    if st.button(button_label):
+        sample = pd.read_csv(VALID_META_FILE).drop_duplicates(subset='track_id').sample(n=1)
+        track = sample.iloc[0]
+        # Store the selected track information in session state
+        st.session_state.selected_track = track
+        st.session_state.genre_predicted = False  # Reset this state to allow new genre prediction
+
+    # If a track is selected, display it
+    if 'selected_track' in st.session_state:
+        st.success(f"Selected music: {st.session_state.selected_track['track_title']}")
+        display_search_music(st.session_state.selected_track)  # Your function to display the track
+
+    # Predict genre button   
+    if 'selected_track' in st.session_state and not st.session_state.genre_predicted:
+        if st.button("Predict genre") and not st.session_state.genre_predicted:
+            features = extract_features(st.session_state.selected_track['track_id'])
+            st.session_state.X = features.drop('track_id', axis=1)
+            predicted_genre = model.predict(st.session_state.X)[0]
+            st.session_state.feature_importance = model.feature_importances_
+            st.session_state.genre_predicted = True  # Update the state to show that genre has been predicted
+            st.session_state.predicted_genre = predicted_genre  # Store the predicted genre
+
+    # Ensure genre information is displayed if it has been predicted
+    if 'genre_predicted' in st.session_state and st.session_state.genre_predicted:
+        st.info(f"Predicted genre: {st.session_state.predicted_genre}")
     
-    # upload music_file
-    uploaded_file = st.file_uploader("Choose your favorite music file!")
-    
-    if uploaded_file is not None:
-        # show play tool
-        st.audio(uploaded_file, format='audio/mp3')
+    # Display the recommendation buttons only if the genre has been predicted
+    if 'genre_predicted' in st.session_state and st.session_state.genre_predicted:
+        cols_buttons = st.columns(2)
+        cols_buttons[0].button("Recommend similar pieces from same genre", on_click=selected_genre_submitted)
+        cols_buttons[1].button("Recommend similar pieces from all genres", on_click=all_genre_submitted)
         
-        # save the file
-        now = datetime.now().strftime('%Y%m%d%H%M%S')
-        upload_location = f"{UPLOAD_HOME}/{now}"
-        
-        if not os.path.exists(upload_location):
-            os.makedirs(upload_location)
-            
-        file_name = uploaded_file.name
-        file_path = os.path.join(upload_location, file_name)
-        
-        with open(file_path, "wb") as f:
-            f.write(uploaded_file.getbuffer())
-            
-        st.success(f"Music uploaded successfully. Now analyzing the music...")
-        
-        # extract features from the file
-        features = extract_features(file_path)
-        st.success("Successfully extracted features !!!")
-        
-        # predict genre
-        X = features.drop('track_id', axis=1)
-        genre_pred = model.predict(X)[0]
-        st.info(f"Predicted genre : {genre_pred}")
-      
-        # get the feature_importances to calculate weighted cosine-similarity
-        feature_importance = model.feature_importances_
-        
-        st.button("Provide similar music in same genre...", on_click=selected_genre_submitted)
-        st.button("Provide similar music in all genre...", on_click=all_genre_submitted)
-          
-        # get recommendation list   
         if 'selected_genre_submitted' in st.session_state and st.session_state.selected_genre_submitted:
-            exist_yn, track_id, result = get_similar_music(upload_location, file_name, X, genre_pred, N_OF_RECOMMEND, weighted, feature_importance)
-            show_result(exist_yn, track_id, selected_model, selected_metric, result)
-            
+            results_same_genre = get_similar_music(
+                st.session_state.selected_track['track_id'],
+                st.session_state.X,
+                genre=st.session_state.predicted_genre,
+                weighted=weighted,
+                feature_importance=st.session_state.feature_importance
+            )
+            show_result(st.session_state.selected_track['track_id'], selected_model, selected_metric, results_same_genre)
+
         if 'all_genre_submitted' in st.session_state and st.session_state.all_genre_submitted:
-            exist_yn, track_id, result = get_similar_music(upload_location, file_name, X, None, N_OF_RECOMMEND, weighted, feature_importance)
-            show_result(exist_yn, track_id, selected_model, selected_metric, result)
+            results_all_genres = get_similar_music(
+                st.session_state.selected_track['track_id'],
+                st.session_state.X,
+                genre=None,
+                weighted=weighted,
+                feature_importance=st.session_state.feature_importance
+            )    
+            show_result(st.session_state.selected_track['track_id'], selected_model, selected_metric, results_all_genres)
             
-       
+            
 if __name__ == "__main__":
     main()

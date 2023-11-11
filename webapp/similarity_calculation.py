@@ -76,8 +76,12 @@ def weighted_cosine_similarity(df, feature_importance):
 
 def gain_similarity_matrix(track_id, X, genre=None, weighted=False, feature_importance=None):
     current_music_df = get_current_music_data()
-    X.insert(loc=0, column=LABEL, value=[genre])
-    X.insert(loc=1, column='track_id', value=[track_id])
+    
+    if LABEL not in X.columns:
+        X.insert(loc=0, column=LABEL, value=[genre])
+    if 'track_id' not in X.columns:
+        X.insert(loc=1, column='track_id', value=[track_id])
+    
     combined_data = pd.concat([current_music_df, X], axis=0, ignore_index=True)
     
     # Normalize feature values.
@@ -90,6 +94,7 @@ def gain_similarity_matrix(track_id, X, genre=None, weighted=False, feature_impo
     if genre is not None:
         combined_data = combined_data[combined_data[LABEL] == genre]
     
+    print(f"original track_id: {track_id}")
     # get similarity
     if not weighted:
         similarity = cosine_similarity(combined_data[feature_list])
@@ -113,23 +118,20 @@ def generate_unique_track_id(df_meta):
             return new_id
         
         
-def get_similar_music(filepath, filename, X, genre, n=10, weighted=False, feature_importance=None):
-    exist_yn = False
+def get_similar_music(track_id, X, genre, n=10, weighted=False, feature_importance=None):
+
     df_meta = pd.read_csv(META_FILE)
-    
-    # Assign new track_id and add it to meta dataset
-    new_track_id = generate_unique_track_id(df_meta)
-    
+  
     # Get the similarity scores
-    series = gain_similarity_matrix(filename, X, genre, weighted, feature_importance)[filename]
+    series = gain_similarity_matrix(track_id, X, genre, weighted, feature_importance)[track_id]
   
     # If it's a DataFrame, drop duplicates and select the track_id column to get a Series
     if isinstance(series, pd.DataFrame):
-        series = series.drop_duplicates(subset=filename, keep='first')[filename].iloc[:, 0]
+        series = series.drop_duplicates(subset=track_id, keep='first')[track_id].iloc[:, 0]
     
      # Sort the Series
     series = series.sort_values(ascending=False)
-    series = series.drop(filename)
+    series = series.drop(track_id)
     
     # Convert to DataFrame
     sorted_df = series.reset_index()
@@ -138,36 +140,8 @@ def get_similar_music(filepath, filename, X, genre, n=10, weighted=False, featur
     # Remove duplicates based on track_id from sorted_df
     sorted_df = sorted_df.drop_duplicates(subset='track_id', keep='first')
     
-    # Check if music already exist in our music_list
-   
-    if sorted_df.iloc[0]['similarity_score'] > 0.9999999999:
-        exist_yn = True
-        track_id = sorted_df.iloc[0]['track_id']
-        sorted_df = sorted_df.iloc[1:]         
-    else:
-        # Add new information to the meta_data file
-        new_row = pd.DataFrame({'track_id': new_track_id, 'track_title': filename}, index=[0])
-        new_row.to_csv(META_FILE, mode='a', header=False, index=True)
-        
-        # Add features
-        X['track_id'] = new_track_id
-        cols = ['track_id'] + [col for col in X if col != 'track_id']
-        X = X[cols]
-        X.to_csv(FEATURE_FILE, mode='a', header=False, index=True)
-
-        # Cut the file to 30 secs, and move it to user_list directory for future use
-        # audio = AudioSegment.from_mp3(f"{filepath}/{filename}")
-        # start_time = 0
-        # end_time = 30000 # 30 secs
-        
-        # if end_time > len(audio):
-        #    end_time = len(audio) 
-           
-        # cut_audio = audio[start_time: end_time]
-        # cut_audio.export(f"{MUSIC_LOCATION}/{track_id}.mp3", format="mp3")
-        # os.remove(f"{filepath}/{filename}")
-        shutil.move(f"{filepath}/{filename}", f"{MUSIC_LOCATION}/{new_track_id}.mp3")
-        track_id = new_track_id
+    # Remove first item
+    sorted_df = sorted_df.iloc[1:]         
         
     # Select the top n songs after removing duplicates
     top_n = sorted_df.head(n)
@@ -178,4 +152,4 @@ def get_similar_music(filepath, filename, X, genre, n=10, weighted=False, featur
     # Join with df_meta_unique to get the genre of the recommended songs
     result = top_n.merge(df_meta_unique[['track_id', LABEL, 'artist_name', 'track_title']], on='track_id', how='left')
     
-    return (exist_yn, track_id, result)
+    return result
