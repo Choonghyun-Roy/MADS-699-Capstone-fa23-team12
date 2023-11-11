@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import os
 
-FEATURES_VALID = 'feature_extraction/features/all_features_medium.csv'
+FEATURES_VALID = 'feature_extraction/features/all_features_medium_with_var.csv'
 
 def extract_features(track_id):
     

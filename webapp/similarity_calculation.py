@@ -9,22 +9,27 @@ from scipy.spatial import distance
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler
 
-META_FILE = 'preprocessing/datasets/tracks_with_genre_small.csv'
+META_FILE_1 = 'preprocessing/datasets/25K_tracks_features_and_labels_for_training.csv'
+META_FILE_2 = 'preprocessing/datasets/25K_tracks_features_and_labels_for_test.csv'
+FEATURE_FILE = 'feature_extraction/features/all_features_medium_with_var.csv'
 MUSIC_LOCATION = 'webapp/music_list'
-FEATURE_FILE = 'feature_extraction/features/all_features.csv'
+
 LABEL = 'depth_1_genre_name'
 
 def get_current_music_data():
+    
     # load data and merge features and label
-    df_meta = pd.read_csv(META_FILE)
-    df_features = pd.read_csv(FEATURE_FILE)
-    merged_df = df_meta.merge(df_features, on='track_id', how='outer')
+    df_meta_1 = pd.read_csv(META_FILE_1)
+    df_meta_2 = pd.read_csv(META_FILE_2)
+    union_df = pd.concat([df_meta_1, df_meta_2], axis=0)
+    
+    df_feature = pd.read_csv(FEATURE_FILE)
 
     # drop unnecessary column and rows including null values)
     
-    used_columns = [LABEL] + [col for col in df_features.columns if col != 'Unnamed: 0']
-    merged_df = merged_df[used_columns].dropna()
-    return merged_df
+    used_columns = [LABEL] + [col for col in df_feature.columns if col != 'Unnamed: 0']
+    union_df = union_df[used_columns].dropna()
+    return union_df
 
 
 def weighted_euclidean_distance(df, feature_importance):
@@ -120,7 +125,9 @@ def generate_unique_track_id(df_meta):
         
 def get_similar_music(track_id, X, genre, n=10, weighted=False, feature_importance=None):
 
-    df_meta = pd.read_csv(META_FILE)
+    df_meta_1 = pd.read_csv(META_FILE_1)
+    df_meta_2 = pd.read_csv(META_FILE_2)
+    df_meta = pd.concat([df_meta_1, df_meta_2], axis=0)
   
     # Get the similarity scores
     series = gain_similarity_matrix(track_id, X, genre, weighted, feature_importance)[track_id]

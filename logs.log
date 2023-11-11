@@ -62,3 +62,234 @@
 2023-11-03 22:55:26,801:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
 2023-11-03 22:55:26,853:INFO:Initializing load_model()
 2023-11-03 22:55:26,853:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-11 20:11:51,938:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-11 20:11:51,938:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-11 20:11:51,939:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-11 20:11:51,939:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-11 20:12:04,538:INFO:Initializing load_model()
+2023-11-11 20:12:04,538:INFO:Initializing load_model()
+2023-11-11 20:12:04,539:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-11 20:12:04,539:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-11 20:12:05,118:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-11-11 20:12:05,118:INFO:Initializing load_model()
+2023-11-11 20:12:05,118:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-11 20:12:05,119:INFO:Initializing load_model()
+2023-11-11 20:12:05,120:INFO:load_model(model_name=xgboost_model_20231021, platform=None, authentication=None, verbose=True)
+2023-11-11 21:18:09,869:INFO:Initializing load_model()
+2023-11-11 21:18:09,871:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:19:13,707:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-11 21:19:13,707:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-11 21:19:13,707:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-11 21:19:13,707:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-11-11 21:19:23,071:INFO:Initializing load_model()
+2023-11-11 21:19:23,071:INFO:Initializing load_model()
+2023-11-11 21:19:23,072:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:19:23,072:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:21:09,127:INFO:Initializing load_model()
+2023-11-11 21:21:09,127:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:21:10,739:INFO:Initializing load_model()
+2023-11-11 21:21:10,739:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:21:12,699:INFO:Initializing load_model()
+2023-11-11 21:21:12,700:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:21:12,768:INFO:Initializing load_model()
+2023-11-11 21:21:12,768:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:21:18,974:INFO:Initializing load_model()
+2023-11-11 21:21:18,974:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:21:19,041:INFO:Initializing load_model()
+2023-11-11 21:21:19,041:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:21:24,522:INFO:Initializing load_model()
+2023-11-11 21:21:24,522:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:21:24,585:INFO:Initializing load_model()
+2023-11-11 21:21:24,585:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:21:30,155:INFO:Initializing load_model()
+2023-11-11 21:21:30,155:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:21:30,217:INFO:Initializing load_model()
+2023-11-11 21:21:30,217:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:24:44,671:INFO:Initializing load_model()
+2023-11-11 21:24:44,672:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:24:44,741:INFO:Initializing load_model()
+2023-11-11 21:24:44,741:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:24:46,600:INFO:Initializing load_model()
+2023-11-11 21:24:46,601:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:24:46,666:INFO:Initializing load_model()
+2023-11-11 21:24:46,666:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:28:12,932:INFO:Initializing load_model()
+2023-11-11 21:28:12,932:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:28:13,031:INFO:Initializing load_model()
+2023-11-11 21:28:13,031:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:28:15,034:INFO:Initializing load_model()
+2023-11-11 21:28:15,035:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:28:15,101:INFO:Initializing load_model()
+2023-11-11 21:28:15,101:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:28:22,587:INFO:Initializing load_model()
+2023-11-11 21:28:22,588:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:28:22,643:INFO:Initializing load_model()
+2023-11-11 21:28:22,643:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:29:47,263:INFO:Initializing load_model()
+2023-11-11 21:29:47,264:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:29:47,429:INFO:Initializing load_model()
+2023-11-11 21:29:47,430:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:29:49,386:INFO:Initializing load_model()
+2023-11-11 21:29:49,387:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:29:49,436:INFO:Initializing load_model()
+2023-11-11 21:29:49,436:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:29:53,581:INFO:Initializing load_model()
+2023-11-11 21:29:53,582:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:29:53,641:INFO:Initializing load_model()
+2023-11-11 21:29:53,641:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:29:56,743:INFO:Initializing load_model()
+2023-11-11 21:29:56,743:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:29:56,810:INFO:Initializing load_model()
+2023-11-11 21:29:56,810:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:43:54,139:INFO:Initializing load_model()
+2023-11-11 21:43:54,140:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:43:54,215:INFO:Initializing load_model()
+2023-11-11 21:43:54,215:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:43:56,124:INFO:Initializing load_model()
+2023-11-11 21:43:56,124:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:43:56,186:INFO:Initializing load_model()
+2023-11-11 21:43:56,187:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:44:00,859:INFO:Initializing load_model()
+2023-11-11 21:44:00,860:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:44:00,917:INFO:Initializing load_model()
+2023-11-11 21:44:00,917:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:44:02,997:INFO:Initializing load_model()
+2023-11-11 21:44:02,998:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:44:03,061:INFO:Initializing load_model()
+2023-11-11 21:44:03,061:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:44:04,932:WARNING:/Users/1108232/PycharmProjects/MADS-699-Capstone-fa23-team12/webapp/similarity_calculation.py:124: DtypeWarning: Columns (49) have mixed types. Specify dtype option on import or set low_memory=False.
+  
+
+2023-11-11 21:44:05,405:WARNING:/Users/1108232/PycharmProjects/MADS-699-Capstone-fa23-team12/webapp/similarity_calculation.py:20: DtypeWarning: Columns (49) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_features = pd.read_csv(FEATURE_FILE)
+
+2023-11-11 21:44:50,273:INFO:Initializing load_model()
+2023-11-11 21:44:50,274:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:44:50,335:INFO:Initializing load_model()
+2023-11-11 21:44:50,335:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:44:52,255:WARNING:/Users/1108232/PycharmProjects/MADS-699-Capstone-fa23-team12/webapp/similarity_calculation.py:124: DtypeWarning: Columns (49) have mixed types. Specify dtype option on import or set low_memory=False.
+  
+
+2023-11-11 21:44:52,715:WARNING:/Users/1108232/PycharmProjects/MADS-699-Capstone-fa23-team12/webapp/similarity_calculation.py:20: DtypeWarning: Columns (49) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_features = pd.read_csv(FEATURE_FILE)
+
+2023-11-11 21:45:19,486:INFO:Initializing load_model()
+2023-11-11 21:45:19,487:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:45:19,549:INFO:Initializing load_model()
+2023-11-11 21:45:19,549:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 21:45:20,568:WARNING:/Users/1108232/PycharmProjects/MADS-699-Capstone-fa23-team12/webapp/similarity_calculation.py:124: DtypeWarning: Columns (49) have mixed types. Specify dtype option on import or set low_memory=False.
+  
+
+2023-11-11 21:45:21,018:WARNING:/Users/1108232/PycharmProjects/MADS-699-Capstone-fa23-team12/webapp/similarity_calculation.py:20: DtypeWarning: Columns (49) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_features = pd.read_csv(FEATURE_FILE)
+
+2023-11-11 21:45:22,631:WARNING:/Users/1108232/PycharmProjects/MADS-699-Capstone-fa23-team12/webapp/similarity_calculation.py:124: DtypeWarning: Columns (49) have mixed types. Specify dtype option on import or set low_memory=False.
+  
+
+2023-11-11 21:45:23,084:WARNING:/Users/1108232/PycharmProjects/MADS-699-Capstone-fa23-team12/webapp/similarity_calculation.py:20: DtypeWarning: Columns (49) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_features = pd.read_csv(FEATURE_FILE)
+
+2023-11-11 22:22:45,610:INFO:Initializing load_model()
+2023-11-11 22:22:45,611:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:22:45,744:INFO:Initializing load_model()
+2023-11-11 22:22:45,744:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:22:48,428:INFO:Initializing load_model()
+2023-11-11 22:22:48,428:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:22:48,486:INFO:Initializing load_model()
+2023-11-11 22:22:48,486:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:22:55,734:INFO:Initializing load_model()
+2023-11-11 22:22:55,735:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:22:55,790:INFO:Initializing load_model()
+2023-11-11 22:22:55,790:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:23:04,335:INFO:Initializing load_model()
+2023-11-11 22:23:04,335:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:23:04,394:INFO:Initializing load_model()
+2023-11-11 22:23:04,394:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:23:06,293:WARNING:/Users/1108232/PycharmProjects/MADS-699-Capstone-fa23-team12/webapp/similarity_calculation.py:124: DtypeWarning: Columns (49) have mixed types. Specify dtype option on import or set low_memory=False.
+  
+
+2023-11-11 22:23:06,757:WARNING:/Users/1108232/PycharmProjects/MADS-699-Capstone-fa23-team12/webapp/similarity_calculation.py:20: DtypeWarning: Columns (49) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_features = pd.read_csv(FEATURE_FILE)
+
+2023-11-11 22:23:36,026:INFO:Initializing load_model()
+2023-11-11 22:23:36,027:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:23:36,094:INFO:Initializing load_model()
+2023-11-11 22:23:36,094:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:23:37,122:WARNING:/Users/1108232/PycharmProjects/MADS-699-Capstone-fa23-team12/webapp/similarity_calculation.py:124: DtypeWarning: Columns (49) have mixed types. Specify dtype option on import or set low_memory=False.
+  
+
+2023-11-11 22:23:37,602:WARNING:/Users/1108232/PycharmProjects/MADS-699-Capstone-fa23-team12/webapp/similarity_calculation.py:20: DtypeWarning: Columns (49) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_features = pd.read_csv(FEATURE_FILE)
+
+2023-11-11 22:38:02,023:INFO:Initializing load_model()
+2023-11-11 22:38:02,023:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:38:02,173:INFO:Initializing load_model()
+2023-11-11 22:38:02,173:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:38:06,226:INFO:Initializing load_model()
+2023-11-11 22:38:06,226:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:38:06,280:INFO:Initializing load_model()
+2023-11-11 22:38:06,280:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:38:12,934:INFO:Initializing load_model()
+2023-11-11 22:38:12,935:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:38:12,993:INFO:Initializing load_model()
+2023-11-11 22:38:12,993:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:38:16,209:INFO:Initializing load_model()
+2023-11-11 22:38:16,209:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:38:16,261:INFO:Initializing load_model()
+2023-11-11 22:38:16,261:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:42:30,119:INFO:Initializing load_model()
+2023-11-11 22:42:30,119:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:42:30,199:INFO:Initializing load_model()
+2023-11-11 22:42:30,200:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:42:55,359:INFO:Initializing load_model()
+2023-11-11 22:42:55,360:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:42:55,427:INFO:Initializing load_model()
+2023-11-11 22:42:55,427:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:43:02,984:INFO:Initializing load_model()
+2023-11-11 22:43:02,986:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:43:03,063:INFO:Initializing load_model()
+2023-11-11 22:43:03,063:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:43:05,664:INFO:Initializing load_model()
+2023-11-11 22:43:05,665:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:43:05,722:INFO:Initializing load_model()
+2023-11-11 22:43:05,722:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:45:37,982:INFO:Initializing load_model()
+2023-11-11 22:45:37,983:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:45:38,137:INFO:Initializing load_model()
+2023-11-11 22:45:38,137:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:45:41,567:INFO:Initializing load_model()
+2023-11-11 22:45:41,567:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:45:41,623:INFO:Initializing load_model()
+2023-11-11 22:45:41,624:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:45:45,818:INFO:Initializing load_model()
+2023-11-11 22:45:45,823:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:45:45,880:INFO:Initializing load_model()
+2023-11-11 22:45:45,881:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:45:51,210:INFO:Initializing load_model()
+2023-11-11 22:45:51,211:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:45:51,267:INFO:Initializing load_model()
+2023-11-11 22:45:51,267:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:46:03,322:INFO:Initializing load_model()
+2023-11-11 22:46:03,323:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:46:03,376:INFO:Initializing load_model()
+2023-11-11 22:46:03,376:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:46:30,492:INFO:Initializing load_model()
+2023-11-11 22:46:30,494:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:46:30,845:INFO:Initializing load_model()
+2023-11-11 22:46:30,846:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:46:43,676:INFO:Initializing load_model()
+2023-11-11 22:46:43,684:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:46:44,283:INFO:Initializing load_model()
+2023-11-11 22:46:44,287:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:47:46,236:INFO:Initializing load_model()
+2023-11-11 22:47:46,267:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)
+2023-11-11 22:47:47,274:INFO:Initializing load_model()
+2023-11-11 22:47:47,279:INFO:load_model(model_name=xgboost_model_25K_74F_231111, platform=None, authentication=None, verbose=True)

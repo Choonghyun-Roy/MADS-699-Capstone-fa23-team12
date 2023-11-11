@@ -10,14 +10,14 @@ from feature_extraction import extract_features
 from dbconnection import execute_query
 
 # Load trained model
-xgboost_model = load_model('xgboost_model_20231021')
-cnn_model = load_model('xgboost_model_20231021')
+xgboost_model = load_model('xgboost_model_25K_74F_231111')
+cnn_model = load_model('xgboost_model_25K_74F_231111')
 N_OF_RECOMMEND = 10
     
 # directory for user uploaded files
 UPLOAD_HOME = 'webapp/user_uploaded_music'  
 FILE_PATH = 'webapp/music_list' 
-VALID_META_FILE = 'preprocessing/datasets/25Ktracks_with_genre_validation.csv'
+VALID_META_FILE = 'preprocessing/datasets/25K_tracks_features_and_labels_for_validation.csv'
   
 def insert_feedback(user_name, selected_model, selected_metric, org_track_id, track_id, like_yn):
     insert_query = """
