@@ -166,7 +166,8 @@ def get_similar_music(filepath, filename, X, genre, n=10, weighted=False, featur
         # cut_audio = audio[start_time: end_time]
         # cut_audio.export(f"{MUSIC_LOCATION}/{track_id}.mp3", format="mp3")
         # os.remove(f"{filepath}/{filename}")
-        shutil.move(f"{filepath}/{filename}", f"{MUSIC_LOCATION}/{track_id}.mp3")
+        shutil.move(f"{filepath}/{filename}", f"{MUSIC_LOCATION}/{new_track_id}.mp3")
+        track_id = new_track_id
         
     # Select the top n songs after removing duplicates
     top_n = sorted_df.head(n)
