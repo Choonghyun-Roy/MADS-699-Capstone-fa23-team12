@@ -16,7 +16,7 @@ N_OF_RECOMMEND = 10
     
 # directory for user uploaded files
 UPLOAD_HOME = 'webapp/user_uploaded_music'  
-FILE_PATH = 'datasets/fma_medium_flatten' 
+FILE_PATH = 'webapp/music_list' 
 VALID_META_FILE = 'preprocessing/datasets/25Ktracks_with_genre_validation.csv'
   
 def insert_feedback(user_name, selected_model, selected_metric, org_track_id, track_id, like_yn):
@@ -79,7 +79,7 @@ def show_result(org_track_id, selected_model, selected_metric, result):
             track_id = row['track_id']
             for col, field in zip(cols[:-2], [track_id, round(row['similarity_score'], 4), row['depth_1_genre_name'], row['artist_name'], row['track_title']]):
                 col.write(field)
-            file_name = f"webapp/music_list/{int(track_id):06d}.mp3"
+            file_name = f"{FILE_PATH}/{int(track_id):06d}.mp3"
             cols[5].audio(file_name, format='audio/mp3')
             feedback_key = f"like_{track_id}"
             liked = cols[6].checkbox('Like', key=feedback_key, value=st.session_state.toggle_states.get(feedback_key, False))
