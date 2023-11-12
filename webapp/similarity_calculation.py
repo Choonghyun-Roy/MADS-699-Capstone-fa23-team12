@@ -1,10 +1,6 @@
 import pandas as pd
 import numpy as np
 import random
-import os
-import shutil
-
-from pydub import AudioSegment
 from scipy.spatial import distance
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler

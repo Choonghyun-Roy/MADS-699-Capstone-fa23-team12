@@ -1,7 +1,5 @@
 import librosa as lb
-import numpy as np
 import pandas as pd
-import os
 
 FEATURES_VALID = 'feature_extraction/features/all_features_medium_with_var.csv'
 
