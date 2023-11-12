@@ -1,4 +1,3 @@
-import librosa as lb
 import pandas as pd
 
 FEATURES_VALID = 'feature_extraction/features/all_features_medium_with_var.csv'
