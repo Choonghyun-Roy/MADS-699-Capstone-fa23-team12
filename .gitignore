@@ -8,7 +8,6 @@ preprocessing/datasets/tracks_with_genre.csv
 /webapp/__pycache__/
 /webapp/logs.log
 /webapp/.DS_Store
-/feature_extraction/features/
 /feature_extraction/.DS_Store
 /feature_extraction/features/raws/
 /.DS_Store
