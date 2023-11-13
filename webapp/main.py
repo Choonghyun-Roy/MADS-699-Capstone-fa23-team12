@@ -1,24 +1,22 @@
 import streamlit as st
-import os
-import base64
 import pandas as pd
-import numpy as np
-from similarity_calculation import get_similar_music
-from datetime import datetime
-from pycaret.classification import * 
+from pathlib import Path
 from feature_extraction import extract_features
+from similarity_calculation import get_similar_music
+from pycaret.classification import load_model
 from dbconnection import execute_query
+
+# Constants
+N_OF_RECOMMENDATIONS = 10  # You can adjust the number of recommendations
+UPLOAD_HOME = Path('webapp/user_uploaded_music')  # Directory for user-uploaded files
+FILE_PATH = Path('webapp/music_list')  # Directory where music list files are stored
+VALID_META_FILE = Path('preprocessing/datasets/25K_tracks_features_and_labels_for_validation.csv')
 
 # Load trained model
 xgboost_model = load_model('xgboost_model_25K_74F_231111')
 cnn_model = load_model('xgboost_model_25K_74F_231111')
 N_OF_RECOMMEND = 10
-    
-# directory for user uploaded files
-UPLOAD_HOME = 'webapp/user_uploaded_music'  
-FILE_PATH = 'webapp/music_list' 
-VALID_META_FILE = 'preprocessing/datasets/25K_tracks_features_and_labels_for_validation.csv'
-  
+             
 def insert_feedback(user_name, selected_model, selected_metric, org_track_id, track_id, like_yn):
     insert_query = """
         INSERT INTO user_feedback (user_name, model_type, metric_type, original_track_id, recommended_track_id, like_yn) 
@@ -60,13 +58,13 @@ def feedback_submitted():
 def feedback_reset():
     st.session_state.feedback_submitted = False
                       
-def show_result(org_track_id, selected_model, selected_metric, result):          
+def show_result(org_track_id, selected_model, selected_metric, type, result):          
     
     # Use session state to store toggle states
     if 'toggle_states' not in st.session_state:
         st.session_state.toggle_states = {}
         
-    with st.form(key='feedback_form'):
+    with st.form(key=f'feedback_form_{org_track_id}_{selected_model}_{selected_metric}_{type}'):
         # Display headers
         cols = st.columns([1, 1, 1, 2, 2, 3, 2])
         headers = ['track_id', 'score', 'genre', 'artist', 'track_title', 'play', 'feedback']
@@ -186,7 +184,7 @@ def main():
                 weighted=weighted,
                 feature_importance=st.session_state.feature_importance
             )
-            show_result(st.session_state.selected_track['track_id'], selected_model, selected_metric, results_same_genre)
+            show_result(st.session_state.selected_track['track_id'], selected_model, selected_metric, 'same', results_same_genre)
 
         if 'all_genre_submitted' in st.session_state and st.session_state.all_genre_submitted:
             results_all_genres = get_similar_music(
@@ -196,7 +194,7 @@ def main():
                 weighted=weighted,
                 feature_importance=st.session_state.feature_importance
             )    
-            show_result(st.session_state.selected_track['track_id'], selected_model, selected_metric, results_all_genres)
+            show_result(st.session_state.selected_track['track_id'], selected_model, selected_metric, 'all', results_all_genres)
             
             
 if __name__ == "__main__":
