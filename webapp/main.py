@@ -79,11 +79,11 @@ def show_result(org_track_id, selected_model, selected_metric, type, result):
                 col.write(field)
             file_name = f"{FILE_PATH}/{int(track_id):06d}.mp3"
             cols[5].audio(file_name, format='audio/mp3')
-            feedback_key = f"like_{track_id}"
+            feedback_key = f"like_{track_id}_{org_track_id}_{selected_model}_{selected_metric}_{type}"
             liked = cols[6].checkbox('Like', key=feedback_key, value=st.session_state.toggle_states.get(feedback_key, False))
             st.session_state.toggle_states[feedback_key] = liked  # Update session state
         
-        user_name = st.text_input("Enter your username", key="user_name")
+        user_name = st.text_input("Enter your username", key=f"user_name_{org_track_id}_{selected_model}_{selected_metric}_{type}")
         st.form_submit_button("Send feedback", on_click=feedback_submitted)
 
     if 'feedback_submitted' in st.session_state and st.session_state.feedback_submitted: 
