@@ -109,14 +109,6 @@ def gain_similarity_matrix(track_id, X, genre=None, weighted=False, feature_impo
     labels = combined_data[LABEL]
     result = pd.DataFrame(similarity, index=labels.index, columns=labels.index)
     return result
-
-
-def generate_unique_track_id(df_meta):
-    existing_ids = set(df_meta['track_id']) 
-    while True:
-        new_id = random.randint(200000, 999999)
-        if new_id not in existing_ids:
-            return new_id
         
         
 def get_similar_music(track_id, X, genre, n=10, weighted=False, feature_importance=None):

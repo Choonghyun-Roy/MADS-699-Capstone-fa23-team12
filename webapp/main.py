@@ -12,17 +12,23 @@ UPLOAD_HOME = Path('webapp/user_uploaded_music')  # Directory for user-uploaded 
 FILE_PATH = Path('webapp/music_list')  # Directory where music list files are stored
 VALID_META_FILE = Path('preprocessing/datasets/25K_tracks_features_and_labels_for_validation.csv')
 
+SIMPLE_COSINE_SIMILARITY = 'Simple Cosine Similarity'
+XGBOOST = 'XGBoost'
+CNN = 'CNN'
+LSTM = 'LSTM'
+
 # Load trained model
 xgboost_model = load_model('xgboost_model_25K_74F_231111')
 cnn_model = load_model('xgboost_model_25K_74F_231111')
+lstm_model = load_model('xgboost_model_25K_74F_231111')
 N_OF_RECOMMEND = 10
              
-def insert_feedback(user_name, selected_model, selected_metric, org_track_id, track_id, like_yn):
+def insert_feedback(user_name, selected_model, org_track_id, track_id, like_yn):
     insert_query = """
-        INSERT INTO user_feedback (user_name, model_type, metric_type, original_track_id, recommended_track_id, like_yn) 
-        VALUES (%s, %s, %s, %s, %s, %s);
+        INSERT INTO user_feedback (user_name, model_type, original_track_id, recommended_track_id, like_yn, apply_yn) 
+        VALUES (%s, %s, %s, %s, %s, 'N');
     """
-    data = (user_name, selected_model, selected_metric, org_track_id, track_id, like_yn)
+    data = (user_name, selected_model, org_track_id, track_id, like_yn)
     execute_query(insert_query, data)
 
 def all_genre_submitted():
@@ -42,29 +48,19 @@ def predict_genre_submitted():
     
 def predict_genre_reset():
     st.session_state.predict_genre_submitted = False
-
-def choose_sample_submitted():
-    st.session_state.choose_sample_submitted = True
-    predict_genre_reset()
-    all_genre_reset()
-    selected_genre_reset()
-    
-def choose_sample_reset():
-    st.session_state.choose_sample_submitted = False
-    
+   
 def feedback_submitted():
     st.session_state.feedback_submitted = True
     
 def feedback_reset():
     st.session_state.feedback_submitted = False
                       
-def show_result(org_track_id, selected_model, selected_metric, type, result):          
+def show_result(org_track_id, selected_model, result):          
     
     # Use session state to store toggle states
-    if 'toggle_states' not in st.session_state:
-        st.session_state.toggle_states = {}
+    st.session_state.toggle_states = {}
         
-    with st.form(key=f'feedback_form_{org_track_id}_{selected_model}_{selected_metric}_{type}'):
+    with st.form(key=f'feedback_form_{org_track_id}_{selected_model}'):
         # Display headers
         cols = st.columns([1, 1, 1, 2, 2, 3, 2])
         headers = ['track_id', 'score', 'genre', 'artist', 'track_title', 'play', 'feedback']
@@ -79,11 +75,11 @@ def show_result(org_track_id, selected_model, selected_metric, type, result):
                 col.write(field)
             file_name = f"{FILE_PATH}/{int(track_id):06d}.mp3"
             cols[5].audio(file_name, format='audio/mp3')
-            feedback_key = f"like_{track_id}_{org_track_id}_{selected_model}_{selected_metric}_{type}"
+            feedback_key = f"like_{track_id}_{org_track_id}_{selected_model}"
             liked = cols[6].checkbox('Like', key=feedback_key, value=st.session_state.toggle_states.get(feedback_key, False))
             st.session_state.toggle_states[feedback_key] = liked  # Update session state
         
-        user_name = st.text_input("Enter your username", key=f"user_name_{org_track_id}_{selected_model}_{selected_metric}_{type}")
+        user_name = st.text_input("Enter your username", key=f"user_name_{org_track_id}_{selected_model}")
         st.form_submit_button("Send feedback", on_click=feedback_submitted)
 
     if 'feedback_submitted' in st.session_state and st.session_state.feedback_submitted: 
@@ -92,7 +88,7 @@ def show_result(org_track_id, selected_model, selected_metric, type, result):
             # Process feedback for each track using the session state information
             for track_id, liked in st.session_state.toggle_states.items():
                 numeric_track_id = int(track_id.split('_')[1])
-                insert_feedback(user_name, selected_model, selected_metric, str(int(org_track_id)).zfill(6), str(int(numeric_track_id)).zfill(6), liked)
+                insert_feedback(user_name, selected_model, str(int(org_track_id)).zfill(6), str(int(numeric_track_id)).zfill(6), liked)
             st.success('Thank you!!! Your feedback is successfully submitted!')
         
         # Clear feedback after submission
@@ -133,16 +129,19 @@ def main():
     col1, col2 = st.columns(2)
 
     with col1:
-        selected_model = st.selectbox('Choose model:', ['Xgboost', 'CNN'], key='model')
+        selected_model = st.selectbox('Choose model:', [SIMPLE_COSINE_SIMILARITY, XGBOOST, CNN, LSTM], key='model')
 
-    with col2:
-        selected_metric = st.selectbox("Choose metric:", ['Cosine-similarity', 'Weighted cosine-similarity'], key='metric')
+    models = {
+        XGBOOST: (xgboost_model, True),
+        CNN: (cnn_model, True),
+        LSTM: (lstm_model, True)
+    }
 
-    model = xgboost_model if selected_model == 'Xgboost' else cnn_model
-    weighted = selected_metric == 'Weighted cosine-similarity'
-
+    model, weighted = models.get(selected_model, (None, False))
+    
     # Show sample music button
-    button_label = "Change sample music!" if 'selected_track' in st.session_state else "Show sample music!"
+    with col2:
+        button_label = "Change sample music!" if 'selected_track' in st.session_state else "Show sample music!"
 
     if st.button(button_label):
         sample = pd.read_csv(VALID_META_FILE).drop_duplicates(subset='track_id').sample(n=1)
@@ -154,48 +153,46 @@ def main():
     # If a track is selected, display it
     if 'selected_track' in st.session_state:
         st.success(f"Selected music: {st.session_state.selected_track['track_title']}")
+        print(f"Selected music: {st.session_state.selected_track['track_title']}")
         display_search_music(st.session_state.selected_track)  # Your function to display the track
 
     # Predict genre button   
+    
     if 'selected_track' in st.session_state and not st.session_state.genre_predicted:
-        if st.button("Predict genre") and not st.session_state.genre_predicted:
+        if selected_model != SIMPLE_COSINE_SIMILARITY:
+            if st.button("Predict genre") and not st.session_state.genre_predicted:
+                features = extract_features(st.session_state.selected_track['track_id'])
+                st.session_state.X = features.drop('track_id', axis=1)
+                predicted_genre = model.predict(st.session_state.X)[0]
+                st.session_state.feature_importance = model.feature_importances_
+                st.session_state.genre_predicted = True  # Update the state to show that genre has been predicted
+                st.session_state.predicted_genre = predicted_genre  # Store the predicted genre
+        else:
+            # If we choose simple cosine-similarity as a recommendation model, we don't need to trained-model
             features = extract_features(st.session_state.selected_track['track_id'])
             st.session_state.X = features.drop('track_id', axis=1)
-            predicted_genre = model.predict(st.session_state.X)[0]
-            st.session_state.feature_importance = model.feature_importances_
-            st.session_state.genre_predicted = True  # Update the state to show that genre has been predicted
-            st.session_state.predicted_genre = predicted_genre  # Store the predicted genre
-
+            
+            
     # Ensure genre information is displayed if it has been predicted
     if 'genre_predicted' in st.session_state and st.session_state.genre_predicted:
         st.info(f"Predicted genre: {st.session_state.predicted_genre}")
     
-    # Display the recommendation buttons only if the genre has been predicted
-    if 'genre_predicted' in st.session_state and st.session_state.genre_predicted:
-        cols_buttons = st.columns(2)
-        cols_buttons[0].button("Recommend similar pieces from same genre", on_click=selected_genre_submitted)
-        cols_buttons[1].button("Recommend similar pieces from all genres", on_click=all_genre_submitted)
-        
+    # Display the recommendation buttons only if the genre has been predicted or selected_model is SIMPLE_COSINE_SIMILARITY
+    if ('genre_predicted' in st.session_state and st.session_state.genre_predicted) or ('selected_track' in st.session_state and selected_model == SIMPLE_COSINE_SIMILARITY):
+        cols_buttons = st.columns(1)
+        cols_buttons[0].button("Recommend similar pieces", on_click=selected_genre_submitted)
+        genre = st.session_state.predicted_genre if 'predicted_genre' in st.session_state else None
+        feature_importance = st.session_state.feature_importance if 'feature_importance' in st.session_state else None
         if 'selected_genre_submitted' in st.session_state and st.session_state.selected_genre_submitted:
-            results_same_genre = get_similar_music(
+            results = get_similar_music(
                 st.session_state.selected_track['track_id'],
                 st.session_state.X,
-                genre=st.session_state.predicted_genre,
+                genre=genre,
                 weighted=weighted,
-                feature_importance=st.session_state.feature_importance
+                feature_importance=feature_importance
             )
-            show_result(st.session_state.selected_track['track_id'], selected_model, selected_metric, 'same', results_same_genre)
+            show_result(st.session_state.selected_track['track_id'], selected_model, results)
 
-        if 'all_genre_submitted' in st.session_state and st.session_state.all_genre_submitted:
-            results_all_genres = get_similar_music(
-                st.session_state.selected_track['track_id'],
-                st.session_state.X,
-                genre=None,
-                weighted=weighted,
-                feature_importance=st.session_state.feature_importance
-            )    
-            show_result(st.session_state.selected_track['track_id'], selected_model, selected_metric, 'all', results_all_genres)
-            
             
 if __name__ == "__main__":
     main()
