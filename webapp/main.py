@@ -18,9 +18,12 @@ CNN = 'CNN'
 LSTM = 'LSTM'
 
 # Load trained model
-supervised_learning_model = load_model('lightgbm_model_25K_88F_231124')
-cnn_model = load_model('xgboost_model_25K_74F_231111')
-lstm_model = load_model('xgboost_model_25K_74F_231111')
+@st.cache(ttl=24*3600)
+def load_model():
+    return  load_model('lightgbm_model_25K_88F_231124'), load_model('xgboost_model_25K_74F_231111'), load_model('xgboost_model_25K_74F_231111')
+
+supervised_learning_model, cnn_model, lstm_model = load_model()
+
 N_OF_RECOMMEND = 10
              
 def insert_feedback(user_name, selected_model, org_track_id, track_id, like_yn):
