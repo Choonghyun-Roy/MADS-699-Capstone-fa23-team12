@@ -5,9 +5,8 @@ from scipy.spatial import distance
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler
 
-META_FILE_1 = 'preprocessing/datasets/25K_tracks_features_and_labels_for_training.csv'
-META_FILE_2 = 'preprocessing/datasets/25K_tracks_features_and_labels_for_test.csv'
-FEATURE_FILE = 'feature_extraction/features/all_features_medium_with_var.csv'
+META_FILE_1 = 'preprocessing/datasets/ohe_25K_tracks_features_and_labels_for_training.csv'
+META_FILE_2 = 'preprocessing/datasets/ohe_25K_tracks_features_and_labels_for_test.csv'
 MUSIC_LOCATION = 'webapp/music_list'
 
 LABEL = 'track_genre_top'
@@ -19,11 +18,7 @@ def get_current_music_data():
     df_meta_2 = pd.read_csv(META_FILE_2)
     union_df = pd.concat([df_meta_1, df_meta_2], axis=0)
     
-    df_feature = pd.read_csv(FEATURE_FILE)
-
-    # drop unnecessary column and rows including null values)
-    
-    used_columns = [LABEL] + [col for col in df_feature.columns if col != 'Unnamed: 0']
+    used_columns = [LABEL] + [col for col in union_df.columns if col not in ['Unnamed: 0', LABEL, 'track_title', 'artist_name', 'set_split', 'set_subset']]
     union_df = union_df[used_columns].dropna()
     return union_df
 

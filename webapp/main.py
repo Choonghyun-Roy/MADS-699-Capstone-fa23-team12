@@ -10,15 +10,15 @@ from dbconnection import execute_query
 N_OF_RECOMMENDATIONS = 10  # You can adjust the number of recommendations
 UPLOAD_HOME = Path('webapp/user_uploaded_music')  # Directory for user-uploaded files
 FILE_PATH = Path('webapp/music_list')  # Directory where music list files are stored
-VALID_META_FILE = Path('preprocessing/datasets/25K_tracks_features_and_labels_for_validation.csv')
+VALID_META_FILE = Path('preprocessing/datasets/ohe_25K_tracks_features_and_labels_for_validation.csv')
 
 SIMPLE_COSINE_SIMILARITY = 'Simple Cosine Similarity'
-XGBOOST = 'XGBoost'
+LIGHTGBM = 'LightGBM'
 CNN = 'CNN'
 LSTM = 'LSTM'
 
 # Load trained model
-xgboost_model = load_model('xgboost_model_25K_74F_231111')
+supervised_learning_model = load_model('lightgbm_model_25K_88F_231124')
 cnn_model = load_model('xgboost_model_25K_74F_231111')
 lstm_model = load_model('xgboost_model_25K_74F_231111')
 N_OF_RECOMMEND = 10
@@ -71,7 +71,7 @@ def show_result(org_track_id, selected_model, result):
         for index, row in result.iterrows():
             cols = st.columns([1, 1, 1, 2, 2, 3, 2])
             track_id = row['track_id']
-            for col, field in zip(cols[:-2], [track_id, round(row['similarity_score'], 4), row['depth_1_genre_name'], row['artist_name'], row['track_title']]):
+            for col, field in zip(cols[:-2], [track_id, round(row['similarity_score'], 4), row['track_genre_top'], row['artist_name'], row['track_title']]):
                 col.write(field)
             file_name = f"{FILE_PATH}/{int(track_id):06d}.mp3"
             cols[5].audio(file_name, format='audio/mp3')
@@ -123,16 +123,16 @@ def display_search_music(track):
         
                 
 def main():
-    st.title('Welcome to AudioGenious !!!')
-    st.image('webapp/images/logo5.png')
+    st.title('Welcome to AudioGenius !!!')
+    st.image('webapp/images/logo9.png')
 
     col1, col2 = st.columns(2)
 
     with col1:
-        selected_model = st.selectbox('Choose model:', [SIMPLE_COSINE_SIMILARITY, XGBOOST, CNN, LSTM], key='model')
+        selected_model = st.selectbox('Choose model:', [SIMPLE_COSINE_SIMILARITY, LIGHTGBM, CNN, LSTM], key='model')
 
     models = {
-        XGBOOST: (xgboost_model, True),
+        LIGHTGBM: (supervised_learning_model, True),
         CNN: (cnn_model, True),
         LSTM: (lstm_model, True)
     }
@@ -162,8 +162,12 @@ def main():
         if selected_model != SIMPLE_COSINE_SIMILARITY:
             if st.button("Predict genre") and not st.session_state.genre_predicted:
                 features = extract_features(st.session_state.selected_track['track_id'])
+                print('features')
+                print(features)
                 st.session_state.X = features.drop('track_id', axis=1)
-                predicted_genre = model.predict(st.session_state.X)[0]
+                pred = model.predict(st.session_state.X)
+                print('---------------------------------------', pred)
+                predicted_genre = pred[0]
                 st.session_state.feature_importance = model.feature_importances_
                 st.session_state.genre_predicted = True  # Update the state to show that genre has been predicted
                 st.session_state.predicted_genre = predicted_genre  # Store the predicted genre
