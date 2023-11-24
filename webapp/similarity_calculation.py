@@ -10,7 +10,7 @@ META_FILE_2 = 'preprocessing/datasets/25K_tracks_features_and_labels_for_test.cs
 FEATURE_FILE = 'feature_extraction/features/all_features_medium_with_var.csv'
 MUSIC_LOCATION = 'webapp/music_list'
 
-LABEL = 'depth_1_genre_name'
+LABEL = 'track_genre_top'
 
 def get_current_music_data():
     

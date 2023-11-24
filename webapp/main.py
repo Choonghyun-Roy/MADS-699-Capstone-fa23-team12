@@ -115,7 +115,7 @@ def display_search_music(track):
     # Display each track row with its feedback checkbox
 
     cols = st.columns([1, 1, 2, 2, 3])
-    for col, field in zip(cols[:-1], [track['track_id'], track['depth_1_genre_name'], track['artist_name'], track['track_title']]):
+    for col, field in zip(cols[:-1], [track['track_id'], track['track_genre_top'], track['artist_name'], track['track_title']]):
         col.write(field)
         
     file_name = f"{FILE_PATH}/{int(track['track_id']):06d}.mp3"
