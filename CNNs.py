@@ -65,5 +65,14 @@ model.fit(
     validation_data=(X_test, y_test_encoded)
 )
 
-accuracy = model.evaluate(X_test, y_test_encoded)[1]
-print(f"Test Accuracy: {accuracy}")
+accuracy = model.evaluate (y_test_original, y_pred)
+precision = precision_score(y_test_original, y_pred, average='weighted')
+recall = recall_score(y_test_original, y_pred, average='weighted')
+f1 = f1_score(y_test_original, y_pred, average='weighted')
+roc_auc = roc_auc_score(y_test_categorical, y_pred_proba, average='macro', multi_class='ovr')
+
+print(f"Accuracy: {accuracy}")
+print(f"Precision: {precision}")
+print(f"Recall: {recall}")
+print(f"F1 Score: {f1}")
+print(f"AUC: {roc_auc}")
