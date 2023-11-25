@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import random
 from scipy.spatial import distance
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler

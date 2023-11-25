@@ -1,5 +1,3 @@
-pip install Flask
-
 from flask import Flask, render_template, request
 import pandas as pd
 from your_recommendation_module import recommend_songs
@@ -22,7 +20,6 @@ def recommend():
 if __name__ == '__main__':
     app.run()
 
-python your_app.py
 
 from flask import Flask, request, jsonify
 import pandas as pd
@@ -42,4 +39,3 @@ def recommendation():
 if __name__ == '__main__':
     app.run()
 
-python your_api.py
