@@ -196,6 +196,11 @@ def main():
 
     provide_music = st.button(button_label, on_click=selected_track_submitted)
     if provide_music and 'selected_track_submitted' in st.session_state and st.session_state.selected_track_submitted:
+        valid_df = pd.read_csv(VALID_META_FILE)
+        print('------------------------------------------------------')
+        print(len(valid_df))
+        print(valid_df.columns)
+        
         sample = pd.read_csv(VALID_META_FILE).drop_duplicates(subset='track_id').sample(n=1)
         track = sample.iloc[0]
         # Store the selected track information in session state
