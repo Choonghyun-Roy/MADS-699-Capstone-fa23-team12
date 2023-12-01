@@ -1,5 +1,5 @@
 preprocessing/datasets/tracks_with_genre.csv filter=lfs diff=lfs merge=lfs -text
+models/lstm/lstm_genre_classification.ipynb  filter=lfs diff=lfs merge=lfs -text
 feature_extraction/features/*.csv filter=lfs diff=lfs merge=lfs -text
 *.mp3 filter=lfs diff=lfs merge=lfs -text
 *.csv filter=lfs diff=lfs merge=lfs -text
-models/lstm/lstm_genre_classification.ipynb  filter=lfs diff=lfs merge=lfs -text
