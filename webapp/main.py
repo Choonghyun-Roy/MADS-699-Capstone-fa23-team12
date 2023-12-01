@@ -38,28 +38,65 @@
     . feedback_reset()
     
 '''
+import torch
+import torch.nn.functional as F
 import streamlit as st
+import numpy as np
 import pandas as pd
+import sys
 from pathlib import Path
 from feature_extraction import extract_features
 from similarity_calculation import get_similar_music
 from pycaret.classification import load_model
+from tensorflow.keras.models import load_model as keras_load_model
 from dbconnection import execute_query
+
+import torch.nn as nn
+class MusicRNN(nn.Module):
+    def __init__(self, input_size, hidden_size, output_size, num_layers, dropout):
+        super(MusicRNN, self).__init__()
+        self.rnn = nn.LSTM(input_size=input_size,
+                           hidden_size=hidden_size,
+                           num_layers=num_layers,
+                           dropout=dropout,
+                           batch_first=True)
+        self.fc = nn.Linear(hidden_size, output_size)
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, x):
+        _, (last_hidden, _) = self.rnn(x)
+        output = self.fc(self.dropout(last_hidden[-1]))
+        return output
 
 # Constants
 N_OF_RECOMMENDATIONS = 10  # You can adjust the number of recommendations
 UPLOAD_HOME = Path('webapp/user_uploaded_music')  # Directory for user-uploaded files
 FILE_PATH = Path('webapp/music_list')  # Directory where music list files are stored
 VALID_META_FILE = Path('preprocessing/datasets/ohe_25K_tracks_features_and_labels_for_validation.csv')
+CNN_FEATURE_IMPORTANCE = Path('preprocessing/cnn_feature_importances.csv')
+LSTM_FEATURE_IMPORTANCE = Path('preprocessing/lstm_feature_importances.csv')
+LABEL_GENRE_MAPPING = Path('label_genre_mapping.csv')
 
 SIMPLE_COSINE_SIMILARITY = 'Type-1. Simple Cosine Similarity'
 LIGHTGBM = 'Type-2. LightGBM'
 CNN = 'Type-3. CNN'
 LSTM = 'Type-4. LSTM'
 
+input_size = 88
+hidden_size = 64
+output_size = 13
+num_layers = 2
+dropout = 0.5
+
 # Load trained model
 def load_models():
-    return  load_model('lightgbm_model_25K_88F_231124'), load_model('xgboost_model_25K_74F_231111'), load_model('xgboost_model_25K_74F_231111')
+    lightgbm = load_model('lightgbm_model_25K_88F_231124')
+    cnn = keras_load_model('cnn_genre_prediction.h5')
+    lstm = MusicRNN(input_size, hidden_size, output_size, num_layers, dropout)
+    lstm.load_state_dict(torch.load('lstm_genre_prediction.pth'))
+
+    print("### models are successfully loaded!!!")
+    return lightgbm, cnn, lstm
 
 supervised_learning_model, cnn_model, lstm_model = load_models()
 
@@ -139,6 +176,11 @@ def show_result(org_track_id, selected_model, result):
         provide_similar_music_reset()
         feedback_reset()
         
+def get_genre_list():
+    genre_target_map = pd.read_csv(LABEL_GENRE_MAPPING)
+    sorted_genre_target_map = genre_target_map.sort_values(by='target_encoded')
+    b_values = sorted_genre_target_map['track_genre_top'].tolist()
+    return b_values
    
 def display_search_music(track):
     st.success(f"Kindly listen to the provided music piece: {st.session_state.selected_track['artist_name']} / {st.session_state.selected_track['track_title']}")
@@ -196,13 +238,11 @@ def main():
 
     provide_music = st.button(button_label, on_click=selected_track_submitted)
     if provide_music and 'selected_track_submitted' in st.session_state and st.session_state.selected_track_submitted:
-        valid_df = pd.read_csv(VALID_META_FILE)
         print('------------------------------------------------------')
-        print(len(valid_df))
-        print(valid_df.columns)
         
         sample = pd.read_csv(VALID_META_FILE).drop_duplicates(subset='track_id').sample(n=1)
         track = sample.iloc[0]
+        print('track selected : ', track)
         # Store the selected track information in session state
         st.session_state.selected_track = track
         st.session_state.genre_predicted = False  # Reset this state to allow new genre prediction
@@ -214,7 +254,7 @@ def main():
 
     # Show 'Predict Genre' button   
     if 'selected_track' in st.session_state and not st.session_state.genre_predicted:
-        if selected_model != SIMPLE_COSINE_SIMILARITY:
+        if selected_model == LIGHTGBM:
             if st.button("Predict Genre") and not st.session_state.genre_predicted:
                 features = extract_features(st.session_state.selected_track['track_id'])
                 st.session_state.X = features.drop('track_id', axis=1)
@@ -223,7 +263,49 @@ def main():
                 st.session_state.genre_predicted = True  # Update the state to show that genre has been predicted
                 st.session_state.feature_importance = model.feature_importances_
                 st.session_state.predicted_genre = predicted_genre  # Store the predicted genre
-        else:
+        
+        elif selected_model == CNN:
+            if st.button("Predict Genre") and not st.session_state.genre_predicted:
+                features = extract_features(st.session_state.selected_track['track_id'])
+                st.session_state.X = features.drop('track_id', axis=1)
+                
+                pred = model.predict(st.session_state.X.to_numpy().reshape(1,-1))
+                pred_genre_index = np.argmax(pred, axis=1)
+                genres = get_genre_list()
+                predicted_genre = genres[pred_genre_index[0]]
+                print('cnn model predicts genre...')
+                print(pred)
+                print('predicted_genre: ', predicted_genre)
+                st.session_state.genre_predicted = True  # Update the state to show that genre has been predicted
+                fi_df = pd.read_csv(CNN_FEATURE_IMPORTANCE)
+                st.session_state.feature_importance = np.array(fi_df.iloc[0][1:].tolist())
+                st.session_state.predicted_genre = predicted_genre  # Store the predicted genre  
+        
+        elif selected_model == LSTM:
+            if st.button("Predict Genre") and not st.session_state.genre_predicted:
+                features = extract_features(st.session_state.selected_track['track_id'])
+                st.session_state.X = features.drop('track_id', axis=1)
+                
+                input_tensor = torch.tensor(st.session_state.X.to_numpy(), dtype=torch.float32).view(1, -1, input_size)
+                model.eval()
+                with torch.no_grad():  # No need to track gradients during inference
+                    raw_predictions = model(input_tensor)
+                # Convert raw predictions to probabilities
+                probabilities = F.softmax(raw_predictions, dim=1)
+                
+                # Get the predicted label (class with the highest probability)
+                pred_genre_index = torch.argmax(probabilities, dim=1).item()
+                genres = get_genre_list()
+                predicted_genre = genres[pred_genre_index]
+                print('lstm model predicts genre...')
+                print(probabilities)
+                print('predicted_genre: ', predicted_genre)
+                st.session_state.genre_predicted = True  # Update the state to show that genre has been predicted
+                fi_df = pd.read_csv(LSTM_FEATURE_IMPORTANCE)
+                st.session_state.feature_importance = np.array(fi_df.iloc[0][1:].tolist())
+                st.session_state.predicted_genre = predicted_genre  # Store the predicted genre
+            
+        elif selected_model == SIMPLE_COSINE_SIMILARITY:
             # If we choose simple cosine-similarity as a recommendation model, we don't need to trained-model
             features = extract_features(st.session_state.selected_track['track_id'])
             st.session_state.X = features.drop('track_id', axis=1)

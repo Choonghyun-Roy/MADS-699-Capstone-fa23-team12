@@ -57,6 +57,8 @@ def weighted_euclidean_distance(df, feature_importance):
 
 
 def weighted_cosine_similarity(df, feature_importance):
+    
+    print('feature_importance: ', feature_importance)
     # Apply weights to the features
     weighted_features = df * feature_importance
     
