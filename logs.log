@@ -1,0 +1,351 @@
+2023-12-02 14:42:05,416:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-12-02 14:42:05,417:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-12-02 14:42:05,417:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-12-02 14:42:05,417:WARNING:
+'cuml' is a soft dependency and not included in the pycaret installation. Please run: `pip install cuml` to install.
+2023-12-02 14:42:38,485:INFO:Initializing load_model()
+2023-12-02 14:42:38,486:INFO:Initializing load_model()
+2023-12-02 14:42:38,486:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:42:38,486:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:42:38,793:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:42:38,991:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:42:38,992:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:42:39,057:INFO:### models are successfully loaded!!!
+2023-12-02 14:42:39,058:INFO:### models are successfully loaded!!!
+2023-12-02 14:42:51,371:INFO:Initializing load_model()
+2023-12-02 14:42:51,372:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:42:51,416:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:42:51,488:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:42:51,514:INFO:### models are successfully loaded!!!
+2023-12-02 14:42:52,200:INFO:------------------------------------------------------
+2023-12-02 14:42:52,249:INFO:track selected :  Unnamed: 0                                                      4679
+2023-12-02 14:42:52,249:INFO:track_id                                                       28120
+2023-12-02 14:42:52,249:INFO:track_genre_top                                            Classical
+2023-12-02 14:42:52,249:INFO:track_title        Alkan, 3me Suite, Op 31, 24 Etude de velocite,...
+2023-12-02 14:42:52,249:INFO:artist_name                                             Felipe Sarro
+2023-12-02 14:42:52,249:INFO:                                         ...                        
+2023-12-02 14:42:52,249:INFO:key_F                                                              0
+2023-12-02 14:42:52,249:INFO:key_F#                                                             0
+2023-12-02 14:42:52,249:INFO:key_G                                                              0
+2023-12-02 14:42:52,249:INFO:scale_major                                                        0
+2023-12-02 14:42:52,249:INFO:scale_minor                                                        1
+2023-12-02 14:42:52,249:INFO:Name: 486, Length: 95, dtype: object
+2023-12-02 14:42:52,250:INFO:Selected Music Piece: Alkan, 3me Suite, Op 31, 24 Etude de velocite, Prestissimo
+2023-12-02 14:43:36,711:INFO:Initializing load_model()
+2023-12-02 14:43:36,711:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:43:36,743:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:43:36,808:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:43:36,835:INFO:### models are successfully loaded!!!
+2023-12-02 14:43:39,971:INFO:Initializing load_model()
+2023-12-02 14:43:39,972:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:43:40,009:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:43:40,074:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:43:40,099:INFO:### models are successfully loaded!!!
+2023-12-02 14:43:40,783:INFO:------------------------------------------------------
+2023-12-02 14:43:40,807:INFO:track selected :  Unnamed: 0                22032
+2023-12-02 14:43:40,807:INFO:track_id                 133444
+2023-12-02 14:43:40,807:INFO:track_genre_top    Instrumental
+2023-12-02 14:43:40,807:INFO:track_title             Rainbow
+2023-12-02 14:43:40,807:INFO:artist_name           TRG Banks
+2023-12-02 14:43:40,807:INFO:                       ...     
+2023-12-02 14:43:40,807:INFO:key_F                         0
+2023-12-02 14:43:40,807:INFO:key_F#                        0
+2023-12-02 14:43:40,807:INFO:key_G                         0
+2023-12-02 14:43:40,807:INFO:scale_major                   1
+2023-12-02 14:43:40,807:INFO:scale_minor                   0
+2023-12-02 14:43:40,807:INFO:Name: 2235, Length: 95, dtype: object
+2023-12-02 14:43:40,807:INFO:Selected Music Piece: Rainbow
+2023-12-02 14:43:54,911:INFO:Initializing load_model()
+2023-12-02 14:43:54,911:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:43:54,954:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:43:55,017:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:43:55,041:INFO:### models are successfully loaded!!!
+2023-12-02 14:43:55,739:INFO:Selected Music Piece: Rainbow
+2023-12-02 14:43:56,156:INFO:original track_id: 133444
+2023-12-02 14:43:58,651:INFO:cosine similarity
+2023-12-02 14:43:58,655:INFO:[[1.         0.90025092 0.90288937 ... 0.87528409 0.83126104 0.77587889]
+2023-12-02 14:43:58,655:INFO: [0.90025092 1.         0.90986526 ... 0.87686879 0.84041063 0.78910073]
+2023-12-02 14:43:58,655:INFO: [0.90288937 0.90986526 1.         ... 0.89543983 0.84459068 0.80208177]
+2023-12-02 14:43:58,655:INFO: ...
+2023-12-02 14:43:58,655:INFO: [0.87528409 0.87686879 0.89543983 ... 1.         0.83378146 0.79045513]
+2023-12-02 14:43:58,655:INFO: [0.83126104 0.84041063 0.84459068 ... 0.83378146 1.         0.74608332]
+2023-12-02 14:43:58,655:INFO: [0.77587889 0.78910073 0.80208177 ... 0.79045513 0.74608332 1.        ]]
+2023-12-02 14:46:49,806:INFO:Initializing load_model()
+2023-12-02 14:46:49,807:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:46:49,849:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:46:49,926:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:46:49,963:INFO:### models are successfully loaded!!!
+2023-12-02 14:46:50,648:INFO:Selected Music Piece: Rainbow
+2023-12-02 14:46:51,075:INFO:original track_id: 133444
+2023-12-02 14:46:53,389:INFO:cosine similarity
+2023-12-02 14:46:53,390:INFO:[[1.         0.90025092 0.90288937 ... 0.87528409 0.83126104 0.77587889]
+2023-12-02 14:46:53,390:INFO: [0.90025092 1.         0.90986526 ... 0.87686879 0.84041063 0.78910073]
+2023-12-02 14:46:53,391:INFO: [0.90288937 0.90986526 1.         ... 0.89543983 0.84459068 0.80208177]
+2023-12-02 14:46:53,391:INFO: ...
+2023-12-02 14:46:53,391:INFO: [0.87528409 0.87686879 0.89543983 ... 1.         0.83378146 0.79045513]
+2023-12-02 14:46:53,391:INFO: [0.83126104 0.84041063 0.84459068 ... 0.83378146 1.         0.74608332]
+2023-12-02 14:46:53,391:INFO: [0.77587889 0.78910073 0.80208177 ... 0.79045513 0.74608332 1.        ]]
+2023-12-02 14:46:53,487:INFO:Feedback_Submitted
+2023-12-02 14:46:55,523:INFO:MySQL Database connection successful
+2023-12-02 14:46:56,137:INFO:Query successful
+2023-12-02 14:46:56,138:INFO:Database connection closed.
+2023-12-02 14:46:57,871:INFO:MySQL Database connection successful
+2023-12-02 14:46:58,586:INFO:Query successful
+2023-12-02 14:46:58,597:INFO:Database connection closed.
+2023-12-02 14:46:59,989:INFO:MySQL Database connection successful
+2023-12-02 14:47:00,584:INFO:Query successful
+2023-12-02 14:47:00,586:INFO:Database connection closed.
+2023-12-02 14:47:02,136:INFO:MySQL Database connection successful
+2023-12-02 14:47:02,886:INFO:Query successful
+2023-12-02 14:47:02,888:INFO:Database connection closed.
+2023-12-02 14:47:04,315:INFO:MySQL Database connection successful
+2023-12-02 14:47:04,923:INFO:Query successful
+2023-12-02 14:47:04,925:INFO:Database connection closed.
+2023-12-02 14:47:06,278:INFO:MySQL Database connection successful
+2023-12-02 14:47:06,853:INFO:Query successful
+2023-12-02 14:47:06,854:INFO:Database connection closed.
+2023-12-02 14:47:08,219:INFO:MySQL Database connection successful
+2023-12-02 14:47:08,802:INFO:Query successful
+2023-12-02 14:47:08,803:INFO:Database connection closed.
+2023-12-02 14:47:10,398:INFO:MySQL Database connection successful
+2023-12-02 14:47:11,011:INFO:Query successful
+2023-12-02 14:47:11,021:INFO:Database connection closed.
+2023-12-02 14:47:12,728:INFO:MySQL Database connection successful
+2023-12-02 14:47:13,430:INFO:Query successful
+2023-12-02 14:47:13,439:INFO:Database connection closed.
+2023-12-02 14:47:14,838:INFO:MySQL Database connection successful
+2023-12-02 14:47:15,440:INFO:Query successful
+2023-12-02 14:47:15,441:INFO:Database connection closed.
+2023-12-02 14:47:28,597:INFO:Initializing load_model()
+2023-12-02 14:47:28,598:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:47:28,634:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:47:28,703:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:47:28,727:INFO:### models are successfully loaded!!!
+2023-12-02 14:47:29,413:INFO:Selected Music Piece: Rainbow
+2023-12-02 14:47:32,308:INFO:Initializing load_model()
+2023-12-02 14:47:32,308:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:47:32,347:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:47:32,417:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:47:32,443:INFO:### models are successfully loaded!!!
+2023-12-02 14:47:33,126:INFO:Selected Music Piece: Rainbow
+2023-12-02 14:47:33,163:INFO:cnn model predicts genre...
+2023-12-02 14:47:33,163:INFO:0    Electronic
+2023-12-02 14:47:33,163:INFO:Name: track_genre_top, dtype: object
+2023-12-02 14:47:33,163:INFO:predicted_genre:  Electronic
+2023-12-02 14:47:36,892:INFO:Initializing load_model()
+2023-12-02 14:47:36,893:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:47:36,930:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:47:36,998:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:47:37,026:INFO:### models are successfully loaded!!!
+2023-12-02 14:47:37,711:INFO:Selected Music Piece: Rainbow
+2023-12-02 14:47:38,088:INFO:original track_id: 133444
+2023-12-02 14:47:38,089:INFO:feature_importance:  [ 692 1275 1087 1224 1469  813 1142  848 1037 1172 1059  879  789  863
+2023-12-02 14:47:38,089:INFO:  907  926  875  924  943  863  918  911  908 1060 1025 1014  992 1024
+2023-12-02 14:47:38,089:INFO: 1053 1058  904  926 1076 1034 1025 1064 1358 1480 1211 1173 1199  976
+2023-12-02 14:47:38,089:INFO: 1124 1089 1080  984 1098  988 1132 1086 1248  948 1019 1047 1289 1032
+2023-12-02 14:47:38,089:INFO: 1101 1057  902 1088  837  879  991  834  845  832  740  731  812  768
+2023-12-02 14:47:38,089:INFO:  748  858  840  875   10   11    2   14   41   16   24   32    7   29
+2023-12-02 14:47:38,089:INFO:    8    9  105   48]
+2023-12-02 14:47:38,191:INFO:weighted cosine similarity
+2023-12-02 14:47:38,228:INFO:track_id    397       398       399     ...    151536    151557    133444
+2023-12-02 14:47:38,228:INFO:track_id                                ...                              
+2023-12-02 14:47:38,228:INFO:397       1.000000  0.942411  0.901781  ...  0.929877  0.920731  0.897990
+2023-12-02 14:47:38,228:INFO:398       0.942411  1.000000  0.982686  ...  0.977115  0.969539  0.956471
+2023-12-02 14:47:38,229:INFO:399       0.901781  0.982686  1.000000  ...  0.970938  0.961301  0.951290
+2023-12-02 14:47:38,229:INFO:400       0.920412  0.930556  0.919730  ...  0.933418  0.925830  0.935358
+2023-12-02 14:47:38,229:INFO:405       0.943695  0.984424  0.969435  ...  0.976293  0.974972  0.973295
+2023-12-02 14:47:38,229:INFO:...            ...       ...       ...  ...       ...       ...       ...
+2023-12-02 14:47:38,229:INFO:151534    0.918398  0.975746  0.970138  ...  0.971963  0.957816  0.938433
+2023-12-02 14:47:38,229:INFO:151535    0.897370  0.962404  0.966709  ...  0.973414  0.963437  0.949081
+2023-12-02 14:47:38,229:INFO:151536    0.929877  0.977115  0.970938  ...  1.000000  0.984884  0.957224
+2023-12-02 14:47:38,229:INFO:151557    0.920731  0.969539  0.961301  ...  0.984884  1.000000  0.956639
+2023-12-02 14:47:38,229:INFO:133444    0.897990  0.956471  0.951290  ...  0.957224  0.956639  1.000000
+2023-12-02 14:47:38,229:INFO:
+2023-12-02 14:47:38,229:INFO:[5681 rows x 5681 columns]
+2023-12-02 14:51:50,841:INFO:Initializing load_model()
+2023-12-02 14:51:50,842:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:51:50,889:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:51:50,957:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:51:50,981:INFO:### models are successfully loaded!!!
+2023-12-02 14:51:56,353:INFO:Initializing load_model()
+2023-12-02 14:51:56,354:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:51:56,385:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:51:56,454:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:51:56,483:INFO:### models are successfully loaded!!!
+2023-12-02 14:51:56,957:INFO:Initializing load_model()
+2023-12-02 14:51:56,957:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:51:56,974:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:51:57,013:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:51:57,031:INFO:### models are successfully loaded!!!
+2023-12-02 14:52:06,428:INFO:Initializing load_model()
+2023-12-02 14:52:06,428:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:52:06,469:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:52:06,547:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:52:06,574:INFO:### models are successfully loaded!!!
+2023-12-02 14:52:07,273:INFO:------------------------------------------------------
+2023-12-02 14:52:07,293:INFO:track selected :  Unnamed: 0               18373
+2023-12-02 14:52:07,293:INFO:track_id                116240
+2023-12-02 14:52:07,293:INFO:track_genre_top     Electronic
+2023-12-02 14:52:07,293:INFO:track_title        Rah Rah Rah
+2023-12-02 14:52:07,293:INFO:artist_name            RPG-H8R
+2023-12-02 14:52:07,293:INFO:                      ...     
+2023-12-02 14:52:07,293:INFO:key_F                        1
+2023-12-02 14:52:07,293:INFO:key_F#                       0
+2023-12-02 14:52:07,293:INFO:key_G                        0
+2023-12-02 14:52:07,293:INFO:scale_major                  1
+2023-12-02 14:52:07,293:INFO:scale_minor                  0
+2023-12-02 14:52:07,293:INFO:Name: 1836, Length: 95, dtype: object
+2023-12-02 14:52:07,293:INFO:Selected Music Piece: Rah Rah Rah
+2023-12-02 14:52:13,436:INFO:Initializing load_model()
+2023-12-02 14:52:13,437:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:52:13,475:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:52:13,544:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:52:13,572:INFO:### models are successfully loaded!!!
+2023-12-02 14:52:14,254:INFO:Selected Music Piece: Rah Rah Rah
+2023-12-02 14:52:14,288:INFO:cnn model predicts genre...
+2023-12-02 14:52:14,288:INFO:0    Hip-Hop
+2023-12-02 14:52:14,288:INFO:Name: track_genre_top, dtype: object
+2023-12-02 14:52:14,288:INFO:predicted_genre:  Hip-Hop
+2023-12-02 14:52:26,413:INFO:Initializing load_model()
+2023-12-02 14:52:26,413:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:52:26,456:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:52:26,524:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:52:26,556:INFO:### models are successfully loaded!!!
+2023-12-02 14:52:27,245:INFO:Selected Music Piece: Rah Rah Rah
+2023-12-02 14:52:27,619:INFO:original track_id: 116240
+2023-12-02 14:52:27,620:INFO:feature_importance:  [ 692 1275 1087 1224 1469  813 1142  848 1037 1172 1059  879  789  863
+2023-12-02 14:52:27,620:INFO:  907  926  875  924  943  863  918  911  908 1060 1025 1014  992 1024
+2023-12-02 14:52:27,620:INFO: 1053 1058  904  926 1076 1034 1025 1064 1358 1480 1211 1173 1199  976
+2023-12-02 14:52:27,620:INFO: 1124 1089 1080  984 1098  988 1132 1086 1248  948 1019 1047 1289 1032
+2023-12-02 14:52:27,620:INFO: 1101 1057  902 1088  837  879  991  834  845  832  740  731  812  768
+2023-12-02 14:52:27,620:INFO:  748  858  840  875   10   11    2   14   41   16   24   32    7   29
+2023-12-02 14:52:27,620:INFO:    8    9  105   48]
+2023-12-02 14:52:29,577:INFO:weighted cosine similarity
+2023-12-02 14:52:29,617:INFO:track_id    2         3         5       ...    154308    154309    116240
+2023-12-02 14:52:29,617:INFO:track_id                                ...                              
+2023-12-02 14:52:29,617:INFO:2         1.000000  0.979431  0.979165  ...  0.950957  0.894848  0.956206
+2023-12-02 14:52:29,617:INFO:3         0.979431  1.000000  0.985846  ...  0.955869  0.904133  0.961068
+2023-12-02 14:52:29,617:INFO:5         0.979165  0.985846  1.000000  ...  0.971206  0.907451  0.964759
+2023-12-02 14:52:29,617:INFO:10        0.949819  0.956881  0.966531  ...  0.947362  0.839512  0.922082
+2023-12-02 14:52:29,617:INFO:134       0.976124  0.985564  0.986892  ...  0.965849  0.913366  0.974343
+2023-12-02 14:52:29,617:INFO:...            ...       ...       ...  ...       ...       ...       ...
+2023-12-02 14:52:29,617:INFO:154306    0.955675  0.961683  0.967619  ...  0.955493  0.914030  0.964293
+2023-12-02 14:52:29,617:INFO:154307    0.968361  0.972486  0.973751  ...  0.951100  0.933526  0.964113
+2023-12-02 14:52:29,617:INFO:154308    0.950957  0.955869  0.971206  ...  1.000000  0.901314  0.939072
+2023-12-02 14:52:29,617:INFO:154309    0.894848  0.904133  0.907451  ...  0.901314  1.000000  0.949791
+2023-12-02 14:52:29,617:INFO:116240    0.956206  0.961068  0.964759  ...  0.939072  0.949791  1.000000
+2023-12-02 14:52:29,617:INFO:
+2023-12-02 14:52:29,617:INFO:[22291 rows x 22291 columns]
+2023-12-02 14:52:49,988:INFO:Initializing load_model()
+2023-12-02 14:52:49,989:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:52:50,023:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:52:50,089:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:52:50,117:INFO:### models are successfully loaded!!!
+2023-12-02 14:52:50,809:INFO:Selected Music Piece: Rah Rah Rah
+2023-12-02 14:52:53,584:INFO:Initializing load_model()
+2023-12-02 14:52:53,584:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:52:53,624:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:52:53,691:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:52:53,718:INFO:### models are successfully loaded!!!
+2023-12-02 14:52:54,410:INFO:Selected Music Piece: Rah Rah Rah
+2023-12-02 14:52:54,617:INFO:1/1 [==============================] - ETA: 0s
+2023-12-02 14:52:54,617:INFO:1/1 [==============================] - 0s 129ms/step
+2023-12-02 14:52:54,623:INFO:cnn model predicts genre...
+2023-12-02 14:52:54,623:INFO:[[0. 0. 1. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.]]
+2023-12-02 14:52:54,623:INFO:predicted_genre:  Electronic
+2023-12-02 14:52:56,678:INFO:Initializing load_model()
+2023-12-02 14:52:56,678:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:52:56,720:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:52:56,790:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:52:56,815:INFO:### models are successfully loaded!!!
+2023-12-02 14:52:57,497:INFO:Selected Music Piece: Rah Rah Rah
+2023-12-02 14:52:57,868:INFO:original track_id: 116240
+2023-12-02 14:52:57,870:INFO:feature_importance:  [0.00417365 0.00685938 0.0046933  0.01189015 0.00549042 0.00616841
+2023-12-02 14:52:57,870:INFO: 0.00914717 0.00766579 0.00620352 0.01735546 0.00418914 0.0043154
+2023-12-02 14:52:57,870:INFO: 0.0029707  0.00383565 0.0037767  0.00349882 0.0035893  0.00362693
+2023-12-02 14:52:57,870:INFO: 0.00300345 0.00338395 0.00372546 0.00277377 0.00306688 0.00466185
+2023-12-02 14:52:57,870:INFO: 0.00320224 0.00337292 0.00334151 0.00313098 0.00397393 0.003752
+2023-12-02 14:52:57,870:INFO: 0.00297166 0.00320841 0.00419352 0.00363967 0.01554316 0.01262642
+2023-12-02 14:52:57,870:INFO: 0.00656628 0.00957774 0.00535857 0.00586756 0.00382738 0.00477619
+2023-12-02 14:52:57,870:INFO: 0.00504901 0.0054402  0.00331524 0.00384723 0.00393299 0.00398241
+2023-12-02 14:52:57,870:INFO: 0.00363953 0.00393196 0.00827094 0.00405007 0.00349434 0.00493074
+2023-12-02 14:52:57,870:INFO: 0.00682596 0.0066363  0.00476742 0.00371319 0.00426402 0.00378628
+2023-12-02 14:52:57,870:INFO: 0.00346367 0.00621107 0.00309076 0.0033295  0.00394222 0.004431
+2023-12-02 14:52:57,870:INFO: 0.00364512 0.00258928 0.00442742 0.00273439 0.00361948 0.00234141
+2023-12-02 14:52:57,870:INFO: 0.00295062 0.00565835 0.00217394 0.00104485 0.00112756 0.00116294
+2023-12-02 14:52:57,870:INFO: 0.00228861 0.00146029 0.00158188 0.00179332 0.00092596 0.00161554
+2023-12-02 14:52:57,870:INFO: 0.00128723 0.00170675 0.00220338 0.00340786]
+2023-12-02 14:53:00,437:INFO:weighted cosine similarity
+2023-12-02 14:53:00,506:INFO:track_id    2         3         5       ...    154308    154309    116240
+2023-12-02 14:53:00,506:INFO:track_id                                ...                              
+2023-12-02 14:53:00,506:INFO:2         1.000000  0.979591  0.977933  ...  0.949507  0.906850  0.951077
+2023-12-02 14:53:00,506:INFO:3         0.979591  1.000000  0.986032  ...  0.961037  0.914999  0.953204
+2023-12-02 14:53:00,506:INFO:5         0.977933  0.986032  1.000000  ...  0.973575  0.916563  0.954078
+2023-12-02 14:53:00,506:INFO:10        0.948828  0.955897  0.958795  ...  0.943520  0.852234  0.950532
+2023-12-02 14:53:00,506:INFO:134       0.961109  0.968929  0.972168  ...  0.950563  0.902979  0.978247
+2023-12-02 14:53:00,506:INFO:...            ...       ...       ...  ...       ...       ...       ...
+2023-12-02 14:53:00,506:INFO:154306    0.949004  0.962253  0.968478  ...  0.965730  0.931881  0.943159
+2023-12-02 14:53:00,506:INFO:154307    0.974820  0.971571  0.974191  ...  0.959343  0.941235  0.949449
+2023-12-02 14:53:00,506:INFO:154308    0.949507  0.961037  0.973575  ...  1.000000  0.911459  0.927829
+2023-12-02 14:53:00,507:INFO:154309    0.906850  0.914999  0.916563  ...  0.911459  1.000000  0.934070
+2023-12-02 14:53:00,507:INFO:116240    0.951077  0.953204  0.954078  ...  0.927829  0.934070  1.000000
+2023-12-02 14:53:00,507:INFO:
+2023-12-02 14:53:00,507:INFO:[22291 rows x 22291 columns]
+2023-12-02 14:54:05,885:INFO:Initializing load_model()
+2023-12-02 14:54:05,886:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:54:05,927:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:54:05,992:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:54:06,019:INFO:### models are successfully loaded!!!
+2023-12-02 14:54:06,706:INFO:Selected Music Piece: Rah Rah Rah
+2023-12-02 14:54:09,467:INFO:Initializing load_model()
+2023-12-02 14:54:09,468:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:54:09,524:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:54:09,600:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:54:09,627:INFO:### models are successfully loaded!!!
+2023-12-02 14:54:10,310:INFO:Selected Music Piece: Rah Rah Rah
+2023-12-02 14:54:10,360:INFO:lstm model predicts genre...
+2023-12-02 14:54:10,367:INFO:tensor([[4.1478e-03, 1.2187e-03, 6.0346e-01, 4.7654e-02, 2.1673e-02, 7.8508e-02,
+2023-12-02 14:54:10,367:INFO:         3.8834e-02, 7.2592e-02, 7.1744e-03, 5.0004e-04, 6.1325e-02, 5.7602e-02,
+2023-12-02 14:54:10,367:INFO:         5.3133e-03]])
+2023-12-02 14:54:10,367:INFO:predicted_genre:  Electronic
+2023-12-02 14:54:12,390:INFO:Initializing load_model()
+2023-12-02 14:54:12,391:INFO:load_model(model_name=models/final_models/lightgbm_genre_prediction, platform=None, authentication=None, verbose=True)
+2023-12-02 14:54:12,432:INFO:Transformation Pipeline and Model Successfully Loaded
+2023-12-02 14:54:12,506:WARNING:WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.Adam` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.Adam`.
+2023-12-02 14:54:12,532:INFO:### models are successfully loaded!!!
+2023-12-02 14:54:13,214:INFO:Selected Music Piece: Rah Rah Rah
+2023-12-02 14:54:13,585:INFO:original track_id: 116240
+2023-12-02 14:54:13,586:INFO:feature_importance:  [0.0331028  0.04458911 0.06893452 0.08796307 0.08367912 0.05352438
+2023-12-02 14:54:13,586:INFO: 0.11239417 0.06655269 0.04902879 0.09497764 0.0452805  0.04948482
+2023-12-02 14:54:13,586:INFO: 0.05135732 0.04011645 0.03611274 0.03610188 0.03748396 0.02366706
+2023-12-02 14:54:13,586:INFO: 0.03757286 0.04078573 0.03886804 0.02891402 0.02586685 0.04225866
+2023-12-02 14:54:13,586:INFO: 0.03667572 0.04138904 0.04573881 0.04930497 0.04103514 0.04178447
+2023-12-02 14:54:13,586:INFO: 0.04319056 0.03279689 0.0452286  0.04075217 0.1926301  0.06200931
+2023-12-02 14:54:13,586:INFO: 0.18385007 0.16201369 0.05304998 0.11162849 0.04171042 0.08647968
+2023-12-02 14:54:13,586:INFO: 0.08819655 0.04513615 0.03543533 0.03033142 0.03486585 0.04016847
+2023-12-02 14:54:13,586:INFO: 0.08445949 0.04046005 0.15892687 0.04034487 0.03141533 0.05061748
+2023-12-02 14:54:13,586:INFO: 0.06215947 0.05682828 0.05119143 0.04309326 0.06711448 0.05124513
+2023-12-02 14:54:13,586:INFO: 0.05184399 0.06396259 0.03155842 0.06644243 0.09460675 0.05339017
+2023-12-02 14:54:13,586:INFO: 0.06939577 0.03625074 0.06099095 0.01513883 0.02584458 0.02662641
+2023-12-02 14:54:13,586:INFO: 0.05829192 0.10448529 0.09310863 0.02662905 0.0672707  0.01426045
+2023-12-02 14:54:13,586:INFO: 0.05840448 0.04922657 0.05408916 0.11212338 0.04246587 0.04151594
+2023-12-02 14:54:13,586:INFO: 0.04697871 0.0526971  0.02525115 0.02946339]
+2023-12-02 14:54:16,101:INFO:weighted cosine similarity
+2023-12-02 14:54:16,147:INFO:track_id    2         3         5       ...    154308    154309    116240
+2023-12-02 14:54:16,147:INFO:track_id                                ...                              
+2023-12-02 14:54:16,148:INFO:2         1.000000  0.951739  0.953737  ...  0.932195  0.838676  0.936913
+2023-12-02 14:54:16,148:INFO:3         0.951739  1.000000  0.962252  ...  0.943309  0.844774  0.940509
+2023-12-02 14:54:16,148:INFO:5         0.953737  0.962252  1.000000  ...  0.951527  0.849982  0.943292
+2023-12-02 14:54:16,148:INFO:10        0.930581  0.938861  0.938568  ...  0.957172  0.794313  0.932382
+2023-12-02 14:54:16,148:INFO:134       0.956390  0.966228  0.969432  ...  0.951924  0.852335  0.969530
+2023-12-02 14:54:16,148:INFO:...            ...       ...       ...  ...       ...       ...       ...
+2023-12-02 14:54:16,148:INFO:154306    0.898407  0.909059  0.914679  ...  0.911980  0.822521  0.903691
+2023-12-02 14:54:16,148:INFO:154307    0.981339  0.946343  0.949162  ...  0.935591  0.858984  0.934449
+2023-12-02 14:54:16,148:INFO:154308    0.932195  0.943309  0.951527  ...  1.000000  0.841243  0.925923
+2023-12-02 14:54:16,148:INFO:154309    0.838676  0.844774  0.849982  ...  0.841243  1.000000  0.864696
+2023-12-02 14:54:16,148:INFO:116240    0.936913  0.940509  0.943292  ...  0.925923  0.864696  1.000000
+2023-12-02 14:54:16,148:INFO:
+2023-12-02 14:54:16,148:INFO:[22291 rows x 22291 columns]

@@ -4,8 +4,8 @@ from scipy.spatial import distance
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler
 
-META_FILE_1 = 'data/preprocessed/ohe_25K_tracks_features_and_labels_for_training.csv'
-META_FILE_2 = 'data/preprocessed/ohe_25K_tracks_features_and_labels_for_test.csv'
+META_FILE_1 = 'data/processed/ohe_25K_tracks_features_and_labels_for_training.csv'
+META_FILE_2 = 'data/processed/ohe_25K_tracks_features_and_labels_for_test.csv'
 MUSIC_LOCATION = 'webapp/music_list'
 
 LABEL = 'track_genre_top'
@@ -88,8 +88,8 @@ def gain_similarity_matrix(track_id, X, genre=None, weighted=False, feature_impo
 
     combined_data = combined_data.set_index('track_id')
    
-    if genre is not None:
-        combined_data = combined_data[combined_data[LABEL] == genre]
+    # if genre is not None:
+    #    combined_data = combined_data[combined_data[LABEL] == genre]
     
     print(f"original track_id: {track_id}")
     # get similarity

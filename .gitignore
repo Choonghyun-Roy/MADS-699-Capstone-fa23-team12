@@ -10,8 +10,8 @@ preprocessing/datasets/tracks_with_genre.csv
 /webapp/.DS_Store
 /feature_extraction/.DS_Store
 /feature_extraction/features/raw/
-/.DS_Store
-/.logs/log
+.DS_Store
+.logs/log
 /models/supervised/logs.log
 
 

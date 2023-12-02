@@ -1,6 +1,6 @@
 import pandas as pd
 
-FEATURES_VALID = 'data/preprocessed/ohe_25K_tracks_features_and_labels_for_validation.csv'
+FEATURES_VALID = 'data/processed/ohe_25K_tracks_features_and_labels_for_validation.csv'
 
 def extract_features(track_id):
     
