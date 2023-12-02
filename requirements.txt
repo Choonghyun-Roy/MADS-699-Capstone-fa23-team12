@@ -19,7 +19,6 @@ cloudpickle==3.0.0
 comm==0.1.4
 contourpy==1.1.1
 cycler==0.12.1
-Cython==3.0.4
 dacite==1.8.1
 dash==2.14.0
 dash-core-components==2.0.0
@@ -75,7 +74,6 @@ libclang==16.0.6
 librosa==0.9.2
 lightgbm==4.1.0
 llvmlite==0.41.0
-madmom==0.16.1
 Markdown==3.5.1
 markdown-it-py==3.0.0
 MarkupSafe==2.1.3
