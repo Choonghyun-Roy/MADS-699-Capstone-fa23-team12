@@ -4,8 +4,8 @@ from scipy.spatial import distance
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.preprocessing import MinMaxScaler
 
-META_FILE_1 = 'preprocessing/datasets/ohe_25K_tracks_features_and_labels_for_training.csv'
-META_FILE_2 = 'preprocessing/datasets/ohe_25K_tracks_features_and_labels_for_test.csv'
+META_FILE_1 = 'data/preprocessed/ohe_25K_tracks_features_and_labels_for_training.csv'
+META_FILE_2 = 'data/preprocessed/ohe_25K_tracks_features_and_labels_for_test.csv'
 MUSIC_LOCATION = 'webapp/music_list'
 
 LABEL = 'track_genre_top'

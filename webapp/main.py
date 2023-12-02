@@ -72,14 +72,14 @@ class MusicRNN(nn.Module):
 N_OF_RECOMMENDATIONS = 10  # You can adjust the number of recommendations
 UPLOAD_HOME = Path('webapp/user_uploaded_music')  # Directory for user-uploaded files
 FILE_PATH = Path('webapp/music_list')  # Directory where music list files are stored
-VALID_META_FILE = Path('preprocessing/datasets/ohe_25K_tracks_features_and_labels_for_validation.csv')
-CNN_FEATURE_IMPORTANCE = Path('preprocessing/cnn_feature_importances.csv')
-LSTM_FEATURE_IMPORTANCE = Path('preprocessing/lstm_feature_importances.csv')
-LABEL_GENRE_MAPPING = Path('label_genre_mapping.csv')
+VALID_META_FILE = Path('data/processed/ohe_25K_tracks_features_and_labels_for_validation.csv')
+CNN_FEATURE_IMPORTANCE = Path('data/resources/cnn_feature_importances.csv')
+LSTM_FEATURE_IMPORTANCE = Path('data/resources/lstm_feature_importances.csv')
+LABEL_GENRE_MAPPING = Path('data/resources/label_genre_mapping.csv')
 
 SIMPLE_COSINE_SIMILARITY = 'Type-1. Simple Cosine Similarity'
 LIGHTGBM = 'Type-2. LightGBM'
-CNN = 'Type-3. CNN'
+CNN = 'Type-3. Neural Network'
 LSTM = 'Type-4. LSTM'
 
 input_size = 88
@@ -90,10 +90,10 @@ dropout = 0.5
 
 # Load trained model
 def load_models():
-    lightgbm = load_model('lightgbm_model_25K_88F_231124')
-    cnn = keras_load_model('cnn_genre_prediction.h5')
+    lightgbm = load_model('models/final_models/lightgbm_genre_prediction')
+    cnn = keras_load_model('models/final_models/cnn_genre_prediction.h5')
     lstm = MusicRNN(input_size, hidden_size, output_size, num_layers, dropout)
-    lstm.load_state_dict(torch.load('lstm_genre_prediction.pth'))
+    lstm.load_state_dict(torch.load('models/final_models/lstm_genre_prediction.pth'))
 
     print("### models are successfully loaded!!!")
     return lightgbm, cnn, lstm
