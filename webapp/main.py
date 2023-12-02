@@ -260,6 +260,9 @@ def main():
                 st.session_state.X = features.drop('track_id', axis=1)
                 pred = model.predict(st.session_state.X)
                 predicted_genre = pred[0]
+                print('cnn model predicts genre...')
+                print(pred)
+                print('predicted_genre: ', predicted_genre)
                 st.session_state.genre_predicted = True  # Update the state to show that genre has been predicted
                 st.session_state.feature_importance = model.feature_importances_
                 st.session_state.predicted_genre = predicted_genre  # Store the predicted genre
