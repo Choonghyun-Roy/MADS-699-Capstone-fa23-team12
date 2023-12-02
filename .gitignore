@@ -1,9 +1,9 @@
 # ignore datsets since the data is too big and can bring legal issues
 /datasets/
 preprocessing/datasets/tracks_with_genre.csv
-/.history/
-/.idea/
-/.vscode/
+.history/
+.idea/
+.vscode/
 /webapp/user_uploaded_music/
 /webapp/__pycache__/
 /webapp/logs.log
