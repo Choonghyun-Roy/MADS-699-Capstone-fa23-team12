@@ -34,11 +34,11 @@ cd /path/to/parent/directory/
 ```
 
 ```
-mkdir fma_small_flattend # flattend_file_folder_name 
+mkdir fma_medium_flattend # flattend_file_folder_name 
 ```
 
 ```
-find . -type f -name "*.mp3" -exec mv {} ../fma_small_flattend/ \;
+find . -type f -name "*.mp3" -exec mv {} ../fma_medium_flattend/ \;
 ```
 
 ### Directory Structure
