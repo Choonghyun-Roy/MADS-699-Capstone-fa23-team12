@@ -41,10 +41,10 @@ mkdir fma_small_flattend # flattend_file_folder_name
 find . -type f -name "*.mp3" -exec mv {} ../fma_small_flattend/ \;
 ```
 
-### Description of directories
-	
-	|- data/
-	   |- raw             
+### Directory Structure
+$ls
+|- data/
+    |- raw             
     |- proccessed
     |- resources	   
 	|- models/
