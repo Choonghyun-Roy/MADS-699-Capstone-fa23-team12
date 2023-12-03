@@ -18,15 +18,10 @@ Key Questions
 * Can the model accurately identify the genre of the music? 
 * Does the model effectively recommend music to users based on similarity?
 
-### Datasets
+### Audio Files
 1. [fma_medium.zip](https://os.unil.cloud.switch.ch/fma/fma_medium.zip):  25,000 tracks of 30s, 16 unbalanced genres (22 GiB)
 
-### Quick Start
-1. install python 3.9.12
-2. pip install -r requirments.txt
-
-
-### Flatten mp3 files in dataset
+### Flatten mp3 files
 Since in the original data source, mp3 files are separated in different folders. To make it easier to load files to extract features, we need to flatten the file structures. (Mac)
 
 ```
@@ -41,6 +36,9 @@ mkdir fma_small_flattend # flattend_file_folder_name
 find . -type f -name "*.mp3" -exec mv {} ../fma_small_flattend/ \;
 ```
 
+### Quick Start
+1. install python 3.9.12
+2. pip install -r requirments.txt
 
 ### Git Settings
 1. Create a GitHub account if you don't already have one.
