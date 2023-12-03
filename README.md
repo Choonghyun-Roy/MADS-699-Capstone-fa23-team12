@@ -41,6 +41,17 @@ mkdir fma_small_flattend # flattend_file_folder_name
 find . -type f -name "*.mp3" -exec mv {} ../fma_small_flattend/ \;
 ```
 
+### Description of directories
+	
+	|- data/
+	   |- raw             
+    |- proccessed
+    |- resources	   
+	|- models/
+	   |- final_models
+		  |- notebooks
+ |- webapp
+
 ### Quick Start
 1. install python 3.9.12
 2. pip install -r requirments.txt
