@@ -44,13 +44,13 @@ find . -type f -name "*.mp3" -exec mv {} ../fma_small_flattend/ \;
 ### Directory Structure
 ```
 |- data/
-    |- raw             
+    |- raw                        
     |- proccessed
     |- resources	   
-	|- models/
-	   |- final_models
-		  |- notebooks
- |- webapp
+|- models/
+    |- final_models
+    |- notebooks
+|- webapp
 ```
 
 ### Quick Start
