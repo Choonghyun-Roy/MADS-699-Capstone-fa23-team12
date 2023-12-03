@@ -44,13 +44,16 @@ find . -type f -name "*.mp3" -exec mv {} ../fma_small_flattend/ \;
 ### Directory Structure
 ```
 |- data/
-    |- raw                        
-    |- proccessed
-    |- resources	   
+    |- raw                                      -> raw datasets
+    |- proccessed                               -> processed datasets that used in training models
+    |- resources                                -> processed datasets that used in streamlit webapp
+    01. create_meta_with_genre_tree.ipynb       -> preprocess for meta data for music tracks
+    02. feature_extraction.ipynb                -> extract acoustic features from the audio files
+    03. create_final_datasets.ipynb             -> create final dataset for training models
 |- models/
-    |- final_models
-    |- notebooks
-|- webapp
+    |- final_models                             -> store final model files
+    |- notebooks                                -> notebook files for training models.
+|- webapp                                       -> streamlit web application
 ```
 
 ### Quick Start
