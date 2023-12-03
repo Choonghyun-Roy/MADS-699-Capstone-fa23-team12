@@ -7,8 +7,6 @@
   * Shreya Uppal (shreyau@umich.edu)
   * Tianran Lin (hazellin@umich.edu)
 
-### Why this is cool ? Easy to dive into our work??
-
 ### Music Recommendation Model
 In the evolving landscape of digital music services, the ability to accurately recommend music tailored to individual tastes and predict musical genres from vast libraries has become paramount. This report presents an in-depth study on the development of a Music Genre Prediction and Recommendation Engine, a project that stands at the intersection of music information retrieval and machine learning. 
 
