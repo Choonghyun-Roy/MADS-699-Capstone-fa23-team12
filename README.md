@@ -42,7 +42,7 @@ find . -type f -name "*.mp3" -exec mv {} ../fma_small_flattend/ \;
 ```
 
 ### Directory Structure
-$ls
+```
 |- data/
     |- raw             
     |- proccessed
@@ -51,6 +51,7 @@ $ls
 	   |- final_models
 		  |- notebooks
  |- webapp
+```
 
 ### Quick Start
 1. install python 3.9.12
