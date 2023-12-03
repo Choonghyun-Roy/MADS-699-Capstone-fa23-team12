@@ -23,7 +23,7 @@ Additionally, in future phases of our project, we plan to use user feedback as a
 
 The significance of this study is manifold, offering a novel perspective in music recommendation that prioritizes the acoustic features of music. This approach presents practical methodologies for online music streaming services, aiming to enrich the user experience on digital platforms and pave the way for more intelligent, adaptive, and user-focused music discovery tools.
 
-### Audio Files
+### Download link for audio files that used in this project
 1. [fma_medium.zip](https://os.unil.cloud.switch.ch/fma/fma_medium.zip):  25,000 tracks of 30s, 16 unbalanced genres (22 GiB)
 
 ### Flatten mp3 files
