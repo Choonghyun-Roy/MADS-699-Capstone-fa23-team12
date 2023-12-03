@@ -19,6 +19,7 @@ Key Questions
 * Does the model effectively recommend music to users based on similarity?
 
 ### Datasets
+1. [fma_medium.zip](https://os.unil.cloud.switch.ch/fma/fma_medium.zip):  25,000 tracks of 30s, 16 unbalanced genres (22 GiB)
 
 ### Quick Start
 1. install python 3.9.12
