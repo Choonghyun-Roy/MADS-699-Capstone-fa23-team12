@@ -240,8 +240,14 @@ def main():
     if provide_music and 'selected_track_submitted' in st.session_state and st.session_state.selected_track_submitted:
         print('------------------------------------------------------')
         
-        sample = pd.read_csv(VALID_META_FILE).drop_duplicates(subset='track_id').sample(n=1)
-        track = sample.iloc[0]
+        # choose one sample from valid set with eqaul chance for each genre 
+        valid_df = pd.read_csv(VALID_META_FILE).drop_duplicates(subset='track_id')
+        unique_labels = valid_df['track_genre_top'].unique()
+        samples_per_label = [valid_df[valid_df['track_genre_top'] == label].sample(n=1) for label in unique_labels]
+        samples_df = pd.concat(samples_per_label)
+        final_sample = samples_df.sample(n=1)
+        
+        track = final_sample.iloc[0]
         print('track selected : ', track)
         # Store the selected track information in session state
         st.session_state.selected_track = track
