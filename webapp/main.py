@@ -83,10 +83,11 @@ CNN = 'Type-3. Neural Network'
 LSTM = 'Type-4. LSTM'
 
 input_size = 88
-hidden_size = 64
+hidden_size = 256
 output_size = 13
 num_layers = 2
-dropout = 0.5
+dropout = 0.2
+
 
 # Load trained model
 def load_models():
