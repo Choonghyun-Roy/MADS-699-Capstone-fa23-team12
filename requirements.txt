@@ -123,6 +123,7 @@ pydantic_core==2.14.5
 pydeck==0.8.1b0
 pydub==0.25.1
 Pygments==2.16.1
+pynndescent==0.5.4
 pyod==1.1.0
 pyparsing==3.1.1
 python-dateutil==2.8.2
@@ -177,6 +178,7 @@ typeguard==4.1.5
 typing_extensions==4.8.0
 tzdata==2023.3
 tzlocal==5.2
+umap-learn==0.5.1
 urllib3==2.0.6
 utils==1.0.1
 validators==0.22.0
