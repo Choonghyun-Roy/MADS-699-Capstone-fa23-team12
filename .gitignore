@@ -13,5 +13,8 @@ preprocessing/datasets/tracks_with_genre.csv
 .DS_Store
 .logs/log
 /models/supervised/logs.log
+weapp/music_list/
+*.mp3
+*.csv
 
 
